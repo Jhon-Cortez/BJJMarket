@@ -1,0 +1,103 @@
+Table person {
+  person_id int [primary key]
+  name varchar(255)
+  lastName varchar(255)
+  age int
+  phone varchar(255)
+}
+
+Table employee {
+  employee_id int [primary key]
+  person_id int
+  username varchar(255)
+  password varchar(255)
+}
+
+Table role {
+  role_id int [primary key]
+  name varchar(255)
+}
+
+Table role_employee {
+  role_employee_id int [primary key]
+  employee_id int
+  role_id int
+}
+
+Table category {
+  category_id int [primary key]
+  name varchar(255)
+  description text
+}
+
+Table product {
+  product_id int [primary key]
+  name varchar(255)
+  category_id int
+  description text
+  image varchar(255)
+}
+
+Table supplier {
+  supplier_id int
+  name varchar(255)
+  description text
+}
+
+Table inventory {
+  intentory_id int [primary key]
+  product_id int
+  quantity int
+  supplier_id int
+  price decimal
+}
+
+// Table cart {
+//   cart_id int [primary key]
+//   user_id int
+//   date datetime
+// }
+
+// Table cart_prodcut {
+//   cart_product_id int [primary key]
+//   product_id int
+//   cart_id int
+//   quantity int
+//   total_price decimal
+// }
+
+Table payment_method {
+  payment_method_id int [primary key]
+  name varchar(255)
+  description text
+}
+
+Table sale {
+  sale_id int [primary key]
+  employee_id int
+  payment_method_id int
+  address varchar(255)
+  sale_date datetime
+  total decimal
+}
+
+Table sale_product {
+  sale_product_id int [primary key]
+  sale_id int
+  product_id int
+  quantity int
+  unit_price decimal
+  total_price decimal
+}
+
+
+Ref person_profile: person.person_id < employee.person_id
+Ref category_product: product.category_id > category.category_id
+Ref supplier_inventory: inventory.supplier_id > supplier.supplier_id
+Ref employee_role: employee.employee_id < role_employee.employee_id
+Ref employee_role: role.role_id < role_employee.role_id
+Ref payment_sale: sale.payment_method_id > payment_method.payment_method_id
+Ref sale_employee: sale.employee_id > employee.employee_id
+Ref sale_product: sale.sale_id < sale_product.sale_id
+Ref inventory_product: inventory.product_id - product.product_id
+Ref sale_product: product.product_id < sale_product.product_id
