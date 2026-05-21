@@ -1,26 +1,33 @@
 Table person {
   person_id int [primary key]
   name varchar(255)
-  lastName varchar(255)
-  age int
-  phone varchar(255)
+  last_name varchar(255)
+  birth_date date
+  phone varchar(50)
+  email varchar(255)
+  created_at datetime
+  updated_at datetime
 }
 
-Table employee {
-  employee_id int [primary key]
+Table user {
+  user_id int [primary key]
   person_id int
   username varchar(255)
   password varchar(255)
+  status varchar(50)
+  created_at datetime
+  updated_at datetime
 }
 
 Table role {
   role_id int [primary key]
-  name varchar(255)
+  name varchar(100)
+  description text
 }
 
-Table role_employee {
-  role_employee_id int [primary key]
-  employee_id int
+Table user_role {
+  user_role_id int [primary key]
+  user_id int
   role_id int
 }
 
@@ -28,43 +35,72 @@ Table category {
   category_id int [primary key]
   name varchar(255)
   description text
+  created_at datetime
 }
 
 Table product {
   product_id int [primary key]
-  name varchar(255)
   category_id int
+  name varchar(255)
+  sku varchar(100)
   description text
   image varchar(255)
+  status varchar(50)
+  created_at datetime
+  updated_at datetime
+}
+
+Table product_price {
+  product_price_id int [primary key]
+  product_id int
+  price decimal
+  start_date datetime
+  end_date datetime
+  active boolean
+  created_at datetime
 }
 
 Table supplier {
-  supplier_id int
+  supplier_id int [primary key]
   name varchar(255)
   description text
+  phone varchar(50)
+  email varchar(255)
+  created_at datetime
+}
+
+Table supplier_product {
+  supplier_product_id int [primary key]
+  supplier_id int
+  product_id int
+  purchase_price decimal
+  created_at datetime
 }
 
 Table inventory {
-  intentory_id int [primary key]
+  inventory_id int [primary key]
   product_id int
-  quantity int
-  supplier_id int
-  price decimal
+  stock int
+  minimum_stock int
+  updated_at datetime
 }
 
-// Table cart {
-//   cart_id int [primary key]
-//   user_id int
-//   date datetime
-// }
+Table cart {
+  cart_id int [primary key]
+  customer_id int
+  employee_id int
+  status varchar(50)
+  created_at datetime
+}
 
-// Table cart_prodcut {
-//   cart_product_id int [primary key]
-//   product_id int
-//   cart_id int
-//   quantity int
-//   total_price decimal
-// }
+Table cart_product {
+  cart_product_id int [primary key]
+  cart_id int
+  product_id int
+  quantity int
+  unit_price decimal
+  total_price decimal
+}
 
 Table payment_method {
   payment_method_id int [primary key]
@@ -74,11 +110,12 @@ Table payment_method {
 
 Table sale {
   sale_id int [primary key]
+  customer_id int
   employee_id int
   payment_method_id int
-  address varchar(255)
   sale_date datetime
   total decimal
+  status varchar(50)
 }
 
 Table sale_product {
@@ -90,14 +127,30 @@ Table sale_product {
   total_price decimal
 }
 
+Ref person_user: person.person_id < user.person_id
 
-Ref person_profile: person.person_id < employee.person_id
-Ref category_product: product.category_id > category.category_id
-Ref supplier_inventory: inventory.supplier_id > supplier.supplier_id
-Ref employee_role: employee.employee_id < role_employee.employee_id
-Ref employee_role: role.role_id < role_employee.role_id
-Ref payment_sale: sale.payment_method_id > payment_method.payment_method_id
-Ref sale_employee: sale.employee_id > employee.employee_id
-Ref sale_product: sale.sale_id < sale_product.sale_id
-Ref inventory_product: inventory.product_id - product.product_id
-Ref sale_product: product.product_id < sale_product.product_id
+Ref user_role_user: user.user_id < user_role.user_id
+Ref user_role_role: role.role_id < user_role.role_id
+
+Ref category_product: category.category_id < product.category_id
+
+Ref product_price_product: product.product_id < product_price.product_id
+
+Ref supplier_product_supplier: supplier.supplier_id < supplier_product.supplier_id
+Ref supplier_product_product: product.product_id < supplier_product.product_id
+
+Ref inventory_product: product.product_id - inventory.product_id
+
+Ref cart_customer: user.user_id < cart.customer_id
+Ref cart_employee: user.user_id < cart.employee_id
+
+Ref cart_product_cart: cart.cart_id < cart_product.cart_id
+Ref cart_product_product: product.product_id < cart_product.product_id
+
+Ref sale_customer: user.user_id < sale.customer_id
+Ref sale_employee: user.user_id < sale.employee_id
+
+Ref payment_sale: payment_method.payment_method_id < sale.payment_method_id
+
+Ref sale_product_sale: sale.sale_id < sale_product.sale_id
+Ref sale_product_product: product.product_id < sale_product.product_id
