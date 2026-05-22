@@ -1,0 +1,28 @@
+services:
+  liquibase:
+    image: liquibase/liquibase:5.0.1
+    container_name: liquibase-container
+    volumes:
+      - ./backend/src/main/resources/liquibase:/workspace/
+      - ./backend/src/main/resources/liquibase/drivers/mssql-jdbc-13.4.0.jre8.jar:/liquibase/lib/mssql.jar
+    command: >
+      --defaultsFile=/workspace/liquibase.properties
+      --searchPath=/workspace
+      update
+    depends_on:
+      - sql-server
+
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sql-server-container
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=SqlServer@2026!
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql-data:/var/opt/mssql
+    restart: unless-stopped
+
+volumes:
+  sql-data:
