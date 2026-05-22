@@ -125,6 +125,18 @@
         "schemaName": "public",
         "x": 607.7998546787196,
         "y": -206.2343396606363
+      },
+      {
+        "name": "image",
+        "schemaName": "public",
+        "x": -587.4651956043907,
+        "y": 2268
+      },
+      {
+        "name": "product_image",
+        "schemaName": "public",
+        "x": -371.0506448231407,
+        "y": 2268
       }
     ],
     "tableGroupCollapseStates": [],
@@ -486,6 +498,36 @@
           "user_status_id"
         ],
         "secondTableName": "user",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "product_id"
+        ],
+        "firstTableName": "product",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "product_id"
+        ],
+        "secondTableName": "product_image",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "image_id"
+        ],
+        "firstTableName": "image",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "image_id"
+        ],
+        "secondTableName": "product_image",
         "secondSchemaName": "public",
         "secondRelation": "*",
         "checkPoints": []
