@@ -9,50 +9,50 @@
       {
         "name": "person",
         "schemaName": "public",
-        "x": 12,
-        "y": 186
+        "x": -104.89949100625219,
+        "y": 132.86386772443078
       },
       {
         "name": "user",
         "schemaName": "public",
-        "x": 498.060546875,
-        "y": 53
+        "x": 536.5286181422932,
+        "y": -1.954387524704714
       },
       {
         "name": "role",
         "schemaName": "public",
-        "x": 1292.311162436116,
-        "y": -152.91127385008522
+        "x": 1421.6090843066677,
+        "y": -4.130103478491662
       },
       {
         "name": "user_role",
         "schemaName": "public",
-        "x": 898.6062559556678,
-        "y": 213.91854426508104
+        "x": 1065.254581606613,
+        "y": 55.629017923145796
       },
       {
         "name": "category",
         "schemaName": "public",
-        "x": 12,
-        "y": 520
+        "x": -78.89949100625219,
+        "y": 610.4222212344933
       },
       {
         "name": "product",
         "schemaName": "public",
-        "x": 498.060546875,
-        "y": 355
+        "x": 316.71106804347414,
+        "y": 621.5287794948181
       },
       {
         "name": "product_price",
         "schemaName": "public",
-        "x": 1013.98828125,
-        "y": 424
+        "x": 360.4138542604993,
+        "y": 927.0220522087214
       },
       {
         "name": "supplier",
         "schemaName": "public",
-        "x": 12,
-        "y": 726
+        "x": 1462.7958306522064,
+        "y": 1129.9147483065803
       },
       {
         "name": "supplier_product",
@@ -63,38 +63,68 @@
       {
         "name": "inventory",
         "schemaName": "public",
-        "x": 1013.98828125,
-        "y": 726
+        "x": 905.1437450126535,
+        "y": 839.1828374957263
       },
       {
         "name": "cart",
         "schemaName": "public",
-        "x": 141.45772324318546,
-        "y": -184.91127385008522
+        "x": 998.3649908543398,
+        "y": -281.28158855300404
       },
       {
         "name": "cart_product",
         "schemaName": "public",
-        "x": 1539.109375,
-        "y": 12
+        "x": 1528.482148544886,
+        "y": 176.7220100542644
       },
       {
         "name": "payment_method",
         "schemaName": "public",
-        "x": 12,
-        "y": 996
+        "x": -135.00996596240805,
+        "y": 381.3920700125834
       },
       {
         "name": "sale",
         "schemaName": "public",
-        "x": 1013.98828125,
-        "y": 965
+        "x": 364.32111712657,
+        "y": 307.04780174492817
       },
       {
         "name": "sale_product",
         "schemaName": "public",
-        "x": 1539.109375,
-        "y": 282
+        "x": 786.9615680111986,
+        "y": 405.04686122782965
+      },
+      {
+        "name": "product_batch",
+        "schemaName": "public",
+        "x": -587.4651956043907,
+        "y": 931.933343535538
+      },
+      {
+        "name": "batch_status",
+        "schemaName": "public",
+        "x": 135.92460435009195,
+        "y": 1478
+      },
+      {
+        "name": "inventory_movement",
+        "schemaName": "public",
+        "x": -135.00996596240805,
+        "y": 1752
+      },
+      {
+        "name": "movement_type",
+        "schemaName": "public",
+        "x": -135.00996596240805,
+        "y": 2090
+      },
+      {
+        "name": "user_status",
+        "schemaName": "public",
+        "x": 607.7998546787196,
+        "y": -206.2343396606363
       }
     ],
     "tableGroupCollapseStates": [],
@@ -351,6 +381,111 @@
           "product_id"
         ],
         "secondTableName": "sale_product",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "product_id"
+        ],
+        "firstTableName": "product",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "product_batch_id"
+        ],
+        "secondTableName": "cart_product",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "product_id"
+        ],
+        "firstTableName": "product",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "product_batch_id"
+        ],
+        "secondTableName": "sale_product",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "product_id"
+        ],
+        "firstTableName": "product",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "product_id"
+        ],
+        "secondTableName": "product_batch",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "batch_status_id"
+        ],
+        "firstTableName": "batch_status",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "batch_status_id"
+        ],
+        "secondTableName": "product_batch",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "product_batch_id"
+        ],
+        "firstTableName": "product_batch",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "product_batch_id"
+        ],
+        "secondTableName": "inventory_movement",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "movement_type_id"
+        ],
+        "firstTableName": "movement_type",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "movement_type_id"
+        ],
+        "secondTableName": "inventory_movement",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "user_status_id"
+        ],
+        "firstTableName": "user_status",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "user_status_id"
+        ],
+        "secondTableName": "user",
         "secondSchemaName": "public",
         "secondRelation": "*",
         "checkPoints": []
