@@ -24,5 +24,13 @@ services:
       - sql-data:/var/opt/mssql
     restart: unless-stopped
 
+  backend:
+    build: ./backend
+    container_name: backend-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - sql-server
+    restart: always
 volumes:
   sql-data:
