@@ -57,5 +57,8 @@ Dentro de la ruta `backend/src/main/resources/liquibase/drivers/`, alli se debe 
 
 ## Nota
 
-> [!NOTE]
+> [!WARNING]
 > Se debe tener en cuenta la ubicacion de estos archivos, si se piensan modificar nombres o ubicaciones de los archivos necesarios para funcionar, se deberan modificar las rutas en el contenedor.
+
+> [!NOTE]
+> Se debe crear primero la base de datos dentro del contenedor de sql server y despues ejecutar el contenedor de liquibase. 
