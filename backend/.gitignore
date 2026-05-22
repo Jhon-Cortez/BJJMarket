@@ -33,3 +33,5 @@ build/
 .vscode/
 
 /src/main/resources/liquibase/liquibase.properties
+
+/docs/db.dbdiagram
