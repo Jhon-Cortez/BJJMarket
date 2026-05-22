@@ -5,8 +5,6 @@ Table person {
   birth_date date
   phone varchar(50)
   email varchar(255)
-  created_at datetime
-  updated_at datetime
 }
 
 Table user {
@@ -15,8 +13,6 @@ Table user {
   username varchar(255)
   password varchar(255)
   status varchar(50)
-  created_at datetime
-  updated_at datetime
 }
 
 Table role {
@@ -35,29 +31,22 @@ Table category {
   category_id int [primary key]
   name varchar(255)
   description text
-  created_at datetime
 }
 
 Table product {
   product_id int [primary key]
   category_id int
   name varchar(255)
-  sku varchar(100)
   description text
   image varchar(255)
   status varchar(50)
-  created_at datetime
-  updated_at datetime
 }
 
 Table product_price {
   product_price_id int [primary key]
   product_id int
   price decimal
-  start_date datetime
-  end_date datetime
   active boolean
-  created_at datetime
 }
 
 Table supplier {
@@ -66,7 +55,6 @@ Table supplier {
   description text
   phone varchar(50)
   email varchar(255)
-  created_at datetime
 }
 
 Table supplier_product {
@@ -74,15 +62,12 @@ Table supplier_product {
   supplier_id int
   product_id int
   purchase_price decimal
-  created_at datetime
 }
 
 Table inventory {
   inventory_id int [primary key]
   product_id int
   stock int
-  minimum_stock int
-  updated_at datetime
 }
 
 Table cart {
@@ -90,7 +75,6 @@ Table cart {
   customer_id int
   employee_id int
   status varchar(50)
-  created_at datetime
 }
 
 Table cart_product {
