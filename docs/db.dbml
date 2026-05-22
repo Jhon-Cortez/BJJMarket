@@ -10,9 +10,14 @@ Table person {
 Table user {
   user_id int [primary key]
   person_id int
+  user_status_id int
   username varchar(255)
   password varchar(255)
-  status varchar(50)
+}
+Table user_status {
+  user_status_id int [primary key]
+  name varchar(30)
+  description varchar(60)
 }
 
 Table role {
@@ -38,8 +43,22 @@ Table product {
   category_id int
   name varchar(255)
   description text
+  sku varchar(100)
   image varchar(255)
   status varchar(50)
+}
+Table product_batch {
+  product_batch_id int [primary key]
+  product_id int
+  batch_status_id int
+  batch_code varchar(100)
+  quantity int
+  expiration_date date
+}
+Table batch_status{
+  batch_status_id int [primary key]
+  name varchar(30)
+  description varchar(60)
 }
 
 Table product_price {
@@ -67,7 +86,25 @@ Table supplier_product {
 Table inventory {
   inventory_id int [primary key]
   product_id int
-  stock int
+  available_stock int
+  damaged_stock int
+  expired_stock int
+  updated_at datetime
+}
+Table inventory_movement {
+  inventory_movement_id int [primary key]
+  product_batch_id int
+  movement_type_id int
+  quantity int
+  previous_stock int
+  new_stock int
+  reason varchar(100)
+  created_at datetime
+}
+Table movement_type {
+  movement_type_id int [primary key]
+  name varchar(20)
+  description varchar(60)
 }
 
 Table cart {
@@ -80,7 +117,7 @@ Table cart {
 Table cart_product {
   cart_product_id int [primary key]
   cart_id int
-  product_id int
+  product_batch_id int
   quantity int
   unit_price decimal
   total_price decimal
@@ -105,7 +142,7 @@ Table sale {
 Table sale_product {
   sale_product_id int [primary key]
   sale_id int
-  product_id int
+  product_batch_id int
   quantity int
   unit_price decimal
   total_price decimal
@@ -129,7 +166,7 @@ Ref cart_customer: user.user_id < cart.customer_id
 Ref cart_employee: user.user_id < cart.employee_id
 
 Ref cart_product_cart: cart.cart_id < cart_product.cart_id
-Ref cart_product_product: product.product_id < cart_product.product_id
+Ref cart_product_product: product.product_id < cart_product.product_batch_id
 
 Ref sale_customer: user.user_id < sale.customer_id
 Ref sale_employee: user.user_id < sale.employee_id
@@ -137,4 +174,19 @@ Ref sale_employee: user.user_id < sale.employee_id
 Ref payment_sale: payment_method.payment_method_id < sale.payment_method_id
 
 Ref sale_product_sale: sale.sale_id < sale_product.sale_id
-Ref sale_product_product: product.product_id < sale_product.product_id
+Ref sale_product_product: product.product_id < sale_product.product_batch_id
+
+Ref product_batch_product:
+product.product_id < product_batch.product_id
+
+Ref product_batch_status:
+batch_status.batch_status_id < product_batch.batch_status_id
+
+Ref inventory_movement_batch:
+product_batch.product_batch_id < inventory_movement.product_batch_id
+
+Ref inventory_movement_type:
+movement_type.movement_type_id < inventory_movement.movement_type_id
+
+Ref user_status_user:
+user_status.user_status_id < user.user_status_id
