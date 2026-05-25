@@ -1,0 +1,147 @@
+{
+  "version": "2.0.0",
+  "darkMode": true,
+  "gridEnabling": false,
+  "currentViewName": null,
+  "defaultView": {
+    "detailLevel": "All",
+    "tablePositions": [
+      {
+        "name": "person",
+        "schemaName": "public",
+        "x": 12,
+        "y": 12
+      },
+      {
+        "name": "user",
+        "schemaName": "public",
+        "x": 655.84033203125,
+        "y": 12
+      },
+      {
+        "name": "user_status",
+        "schemaName": "public",
+        "x": 12,
+        "y": 282
+      },
+      {
+        "name": "role",
+        "schemaName": "public",
+        "x": 12,
+        "y": 456
+      },
+      {
+        "name": "user_role",
+        "schemaName": "public",
+        "x": 1250.96337890625,
+        "y": 218
+      },
+      {
+        "name": "category",
+        "schemaName": "public",
+        "x": 12,
+        "y": 630
+      },
+      {
+        "name": "product",
+        "schemaName": "public",
+        "x": 677.9317073357519,
+        "y": 355.9340326963839
+      },
+      {
+        "name": "image",
+        "schemaName": "public",
+        "x": 12,
+        "y": 804
+      },
+      {
+        "name": "product_image",
+        "schemaName": "public",
+        "x": 1250.96337890625,
+        "y": 1442
+      },
+      {
+        "name": "product_batch",
+        "schemaName": "public",
+        "x": 1250.96337890625,
+        "y": 869
+      },
+      {
+        "name": "batch_status",
+        "schemaName": "public",
+        "x": 12,
+        "y": 946
+      },
+      {
+        "name": "product_price",
+        "schemaName": "public",
+        "x": 1250.96337890625,
+        "y": 392
+      },
+      {
+        "name": "supplier",
+        "schemaName": "public",
+        "x": 12,
+        "y": 1120
+      },
+      {
+        "name": "supplier_product",
+        "schemaName": "public",
+        "x": 1250.96337890625,
+        "y": 1616
+      },
+      {
+        "name": "inventory",
+        "schemaName": "public",
+        "x": 1250.96337890625,
+        "y": 598
+      },
+      {
+        "name": "inventory_movement",
+        "schemaName": "public",
+        "x": 1830.04296875,
+        "y": 282
+      },
+      {
+        "name": "movement_type",
+        "schemaName": "public",
+        "x": 12,
+        "y": 1358
+      },
+      {
+        "name": "cart",
+        "schemaName": "public",
+        "x": 1250.96337890625,
+        "y": 12
+      },
+      {
+        "name": "cart_product",
+        "schemaName": "public",
+        "x": 1830.04296875,
+        "y": 12
+      },
+      {
+        "name": "payment_method",
+        "schemaName": "public",
+        "x": 12,
+        "y": 1532
+      },
+      {
+        "name": "sale",
+        "schemaName": "public",
+        "x": 1250.96337890625,
+        "y": 1140
+      },
+      {
+        "name": "sale_product",
+        "schemaName": "public",
+        "x": 1830.04296875,
+        "y": 616
+      }
+    ],
+    "tableGroupCollapseStates": [],
+    "stickyNoteLayouts": [],
+    "referencePaths": []
+  },
+  "views": {}
+}
