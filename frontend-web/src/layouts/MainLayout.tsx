@@ -1,13 +1,13 @@
-import Sidebar from "../components/Sidebar";
-
+import Sidebar from "../components/Sidebar/Sidebar";
+import "./MainLayaout.css";
 type MainLayoutProps = {
     children: React.ReactNode;
 };
 const MainLayout = ({ children }: MainLayoutProps) => {
     return (
-        <div>
+        <div className="layout">
             <Sidebar />
-            <main>
+            <main className="content">
                 {children}
             </main>
         </div>

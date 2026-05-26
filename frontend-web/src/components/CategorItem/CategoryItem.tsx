@@ -1,9 +1,10 @@
+import "./CategoryItem.css";
 type CategoryItemProps = {
     name: string;
 };
 function CategoryItem({ name }: CategoryItemProps) {
     return (
-        <li>
+        <li className="category-item">
             {name}
         </li>
     );

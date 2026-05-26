@@ -1,12 +1,11 @@
-import './App.css'
+import './App.css';
 import MainLayout from './layouts/MainLayout'
-import DashboardView from './view/DashboardView'
 
-function App() {
+function App(){
   return (
     <MainLayout>
-      <DashboardView />
+        <h1>Dashboard</h1>
     </MainLayout>
-  );
+  )
 }
-export default App
+export default App;
