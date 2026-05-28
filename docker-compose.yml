@@ -11,18 +11,22 @@ services:
       update
     depends_on:
       - sql-server
+    networks:
+      - sql-network
 
   sql-server:
-    image: mcr.microsoft.com/mssql/server:2019-latest
+    image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: sql-server-container
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=SqlServer@2026!
+      - MSSQL_SA_PASSWORD=SqlServer2026
     ports:
       - "1433:1433"
     volumes:
       - sql-data:/var/opt/mssql
     restart: unless-stopped
+    networks:
+      - sql-network
 
   backend:
     build: ./backend
@@ -45,6 +49,10 @@ services:
       - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
+
+networks:
+  sql-network:
+    driver: bridge
 
 volumes:
   sql-data:
