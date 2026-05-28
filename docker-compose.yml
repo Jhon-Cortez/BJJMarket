@@ -31,6 +31,8 @@ services:
   backend:
     build: ./backend
     container_name: backend-BJJMarket
+    env_file:
+      - ./backend/src/main/resources/.env
     ports:
       - "8080:8080"
     depends_on:
