@@ -30,10 +30,10 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
-	<!--Dependencia Sping web-->
+	<!--Dependencia Spring web-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webmvc</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 	<!--Dependencia OpenAPI(swagger)-->
 		<dependency>
@@ -57,7 +57,12 @@
 	<!--Dependencia Spring Data JPA-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webmvc-test</artifactId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+	<!--Dependencia Spring Test-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 	<!--Dependencia Swagger-->
