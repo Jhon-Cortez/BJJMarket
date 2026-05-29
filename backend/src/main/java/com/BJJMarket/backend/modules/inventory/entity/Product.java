@@ -6,13 +6,12 @@ import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
+import org.hibernate.annotations.UuidGenerator;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,7 +28,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @UuidGenerator
     @Column(name="product_id")
     private UUID product_id;
 
@@ -42,7 +41,7 @@ public class Product {
     @Column(name="sku", nullable = false, unique = true, length = 50)
     private String sku;
 
-    @Column(name="status", nullable = false, unique = true, length = 50)
+    @Column(name="status", nullable = false, length = 50)
     private String status;
 
     @ManyToOne
@@ -52,12 +51,12 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<ProductImage> productImages = new ArrayList<>();
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product_id")
     private List<ProductBatch> productBatches = new ArrayList<>();
     
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product_id")
     private List<Inventory> inventory = new ArrayList<>();
     
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product_id")
     private List<ProductPrice> productPrice = new ArrayList<>();
 }

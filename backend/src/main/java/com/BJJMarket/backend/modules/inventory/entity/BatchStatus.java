@@ -6,11 +6,10 @@ import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
+import org.hibernate.annotations.UuidGenerator;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,7 +26,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class BatchStatus {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @UuidGenerator
     @Column(name="batch_status_id")
     private UUID batch_status_id;
 
@@ -37,6 +36,6 @@ public class BatchStatus {
     @Column(name="description", nullable = false, length = 50)
     private String description;
 
-    @OneToMany(mappedBy = "batch_status")
+    @OneToMany(mappedBy = "batch_status_id")
     private List<ProductBatch> batchEstatus = new ArrayList<>();
 }

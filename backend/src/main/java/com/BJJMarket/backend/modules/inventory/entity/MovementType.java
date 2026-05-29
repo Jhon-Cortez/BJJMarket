@@ -3,21 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.BJJMarket.backend.modules.inventory.entity;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
+import org.hibernate.annotations.UuidGenerator;
+
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -31,7 +31,8 @@ import java.util.List;
 @NoArgsConstructor
 public class MovementType {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
+    @UuidGenerator
     @Column(name = "movement_type_id")
     private UUID movement_type_id;
     
@@ -41,6 +42,6 @@ public class MovementType {
     @Column(name = "description", nullable = false, length = 50)
     private int description;
     
-    @OneToMany(mappedBy = "movement_type")
+    @OneToMany(mappedBy = "movementType")
     private List<InventoryMovement> inventoryMovement = new ArrayList<>();
 }

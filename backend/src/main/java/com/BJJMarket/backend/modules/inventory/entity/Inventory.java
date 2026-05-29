@@ -12,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.hibernate.annotations.UuidGenerator;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
@@ -31,7 +32,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Inventory {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @UuidGenerator
     @Column(name = "inventory_id")
     private UUID category_id;
     

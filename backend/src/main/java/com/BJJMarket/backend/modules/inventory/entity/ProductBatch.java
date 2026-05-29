@@ -14,6 +14,7 @@ import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
+import org.hibernate.annotations.UuidGenerator;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,7 +31,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ProductBatch {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @UuidGenerator
     @Column(name="product_batch_id")
     private UUID product_batch_id;
 
@@ -51,6 +52,6 @@ public class ProductBatch {
     @JoinColumn(name = "product_id")
     private Product product_id;
     
-    @OneToMany(mappedBy = "product_batch")
+    @OneToMany(mappedBy = "productBatch")
     private List<InventoryMovement> inventoryMovement = new ArrayList<>();
 }
