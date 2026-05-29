@@ -16,7 +16,7 @@ import org.hibernate.annotations.UuidGenerator;
 
 import com.BJJMarket.backend.shared.audit.Auditable;
 
-
+//Entidad donde se guarda y administra los datos de cada persona registrada
 @Entity
 @Table(name = "person")
 @Getter
