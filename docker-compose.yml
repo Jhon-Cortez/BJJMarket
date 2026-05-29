@@ -38,6 +38,8 @@ services:
     depends_on:
       - sql-server
     restart: always
+    networks:
+      - sql-network
 
   frontend-web:
     container_name: frontend-web-BJJMarket
