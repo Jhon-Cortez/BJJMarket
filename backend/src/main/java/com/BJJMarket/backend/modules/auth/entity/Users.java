@@ -1,5 +1,6 @@
 package com.BJJMarket.backend.modules.auth.entity;
 
+import org.hibernate.annotations.ManyToAny;
 import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.validator.constraints.UUID;
 
@@ -7,21 +8,38 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Table(name = "users")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Users {
     @Id
     @GeneratedValue
     @UuidGenerator
-    @Column(name = "user_id",columnDefinition = "VARCHAR(36)", updatable = false, nullable = false, unique = true)
-    private UUID user_id;
+    @Column(name = "user_id", updatable = false, nullable = false)
+    private UUID userId;
 
-    @Column(name = "person_id", columnDefinition = "VARCHAR(36)", updatable = false, nullable = false, unique = true)
-    private UUID person_id;
-    @Column(name = "user_status_id")
-    private int user_status_id;
-    @Column(name = "username")
+    @OneToOne
+    @JoinColumn(name = "person_id", nullable = false, updatable = false)
+    private Person person;
+
+    @ManyToOne
+    @JoinColumn(name = "user_status_id", nullable = false)
+    private int userStatusId;
+    @Column(name = "username", columnDefinition = "VARCHAR(30)", nullable = false, unique = true)
     private String username;
-    @Column(name = "password")
+    @Column(name = "password", columnDefinition = "VARCHAR(255)")
     private String password;
 }
