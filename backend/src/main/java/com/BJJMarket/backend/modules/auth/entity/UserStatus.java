@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+//Entidad que guarda los estados que puede tener un usuario(Muchos usuarios pueden tener)
 @Entity
 @Table
 @Getter

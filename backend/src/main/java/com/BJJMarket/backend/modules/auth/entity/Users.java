@@ -16,6 +16,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+//Entidad que almacena y administra los usuarios del aplicativo
 @Entity
 @Table(name = "users")
 @Getter

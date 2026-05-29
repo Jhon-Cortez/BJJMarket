@@ -1,5 +1,7 @@
 package com.BJJMarket.backend.modules.auth.entity;
 
+import com.BJJMarket.backend.shared.audit.Auditable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -9,13 +11,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+//Entidad donde estara almacenada la lista de roles
 @Entity
 @Table(name = "role")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Role {
+public class Role extends Auditable{
     @Id
     @Column(name = "role_id")
     private Integer roleId;

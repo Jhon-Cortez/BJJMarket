@@ -2,7 +2,6 @@ package com.BJJMarket.backend.modules.auth.entity;
 
 import java.util.UUID;
 
-import org.hibernate.annotations.ManyToAny;
 import org.hibernate.annotations.UuidGenerator;
 
 import jakarta.persistence.Column;
@@ -17,6 +16,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+//Entidad o tabla pivot que relaciona usuarios con los roles, la relacion es de uno a muchos,(Un usuario puede tener varios roles)
 @Entity
 @Table(name = "user_role")
 @Getter
