@@ -1,7 +1,8 @@
 package com.BJJMarket.backend.modules.auth.entity;
 
+import java.util.UUID;
+
 import org.hibernate.annotations.UuidGenerator;
-import org.hibernate.validator.constraints.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,7 +16,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 //Entidad que almacena y administra los usuarios del aplicativo
 @Entity
 @Table(name = "users")
@@ -36,7 +36,8 @@ public class Users {
 
     @ManyToOne
     @JoinColumn(name = "user_status_id", nullable = false)
-    private int userStatusId;
+    private UserStatus userStatus;
+
     @Column(name = "username", columnDefinition = "VARCHAR(30)", nullable = false, unique = true)
     private String username;
     @Column(name = "password", columnDefinition = "VARCHAR(255)")
