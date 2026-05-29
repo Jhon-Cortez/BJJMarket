@@ -1,47 +1,47 @@
 Table person {
-  person_id int [primary key]
+  person_id UUID [primary key]
   name varchar(100)
   last_name varchar(100)
-  birth_date date
+  birth_date datetime2
   phone varchar(30)
   email varchar(255)
 }
 
 Table user {
-  user_id int [primary key]
-  person_id int
-  user_status_id int
+  user_id UUID [primary key]
+  person_id UUID
+  user_status_id UUID
   username varchar(30)
   password varchar(255)
 }
 
 Table user_status {
-  user_status_id int [primary key]
+  user_status_id UUID [primary key]
   name varchar(30)
   description varchar(60)
 }
 
 Table role {
-  role_id int [primary key]
+  role_id UUID [primary key]
   name varchar(30)
   description varchar(100)
 }
 
 Table user_role {
-  user_role_id int [primary key]
-  user_id int
-  role_id int
+  user_role_id UUID [primary key]
+  user_id UUID
+  role_id UUID
 }
 
 Table category {
-  category_id int [primary key]
+  category_id UUID [primary key]
   name varchar(30)
   description varchar(100)
 }
 
 Table product {
-  product_id int [primary key]
-  category_id int
+  product_id UUID [primary key]
+  category_id UUID
   name varchar(100)
   description varchar(100)
   sku varchar(80)
@@ -49,40 +49,40 @@ Table product {
 }
 
 Table image {
-  image_id int [primary key]
+  image_id UUID [primary key]
   url varchar(255)
 }
 
 Table product_image {
-  product_image_id int [primary key]
-  product_id int
-  image_id int
+  product_image_id UUID [primary key]
+  product_id UUID
+  image_id UUID
 }
 
 Table product_batch {
-  product_batch_id int [primary key]
-  product_id int
-  batch_status_id int
+  product_batch_id UUID [primary key]
+  product_id UUID
+  batch_status_id UUID
   batch_code varchar(100)
   quantity int
-  expiration_date date
+  expiration_date datetime2
 }
 
 Table batch_status {
-  batch_status_id int [primary key]
+  batch_status_id UUID [primary key]
   name varchar(30)
   description varchar(60)
 }
 
 Table product_price {
-  product_price_id int [primary key]
-  product_id int
+  product_price_id UUID [primary key]
+  product_id UUID
   price decimal(10,2)
   active boolean
 }
 
 Table supplier {
-  supplier_id int [primary key]
+  supplier_id UUID [primary key]
   name varchar(50)
   description varchar(100)
   phone varchar(30)
@@ -90,74 +90,74 @@ Table supplier {
 }
 
 Table supplier_product {
-  supplier_product_id int [primary key]
-  supplier_id int
-  product_id int
+  supplier_product_id UUID [primary key]
+  supplier_id UUID
+  product_id UUID
   purchase_price decimal(10,2)
 }
 
 Table inventory {
-  inventory_id int [primary key]
-  product_id int
+  inventory_id UUID [primary key]
+  product_id UUID
   available_stock int
   damaged_stock int
   expired_stock int
-  updated_at datetime
+  updated_at datetime2
 }
 
 Table inventory_movement {
-  inventory_movement_id int [primary key]
-  product_batch_id int
-  movement_type_id int
+  inventory_movement_id UUID [primary key]
+  product_batch_id UUID
+  movement_type_id UUID
   quantity int
   previous_stock int
   new_stock int
   reason varchar(100)
-  created_at datetime
+  created_at datetime2
 }
 
 Table movement_type {
-  movement_type_id int [primary key]
+  movement_type_id UUID [primary key]
   name varchar(20)
   description varchar(60)
 }
 
 Table cart {
-  cart_id int [primary key]
-  customer_id int
-  employee_id int
+  cart_id UUID [primary key]
+  customer_id UUID
+  employee_id UUID
   status varchar(50)
 }
 
 Table cart_product {
-  cart_product_id int [primary key]
-  cart_id int
-  product_batch_id int
+  cart_product_id UUID [primary key]
+  cart_id UUID
+  product_batch_id UUID
   quantity int
   unit_price decimal(10,2)
   total_price decimal(10,2)
 }
 
 Table payment_method {
-  payment_method_id int [primary key]
+  payment_method_id UUID [primary key]
   name varchar(50)
   description varchar(100)
 }
 
 Table sale {
-  sale_id int [primary key]
-  customer_id int
-  employee_id int
-  payment_method_id int
-  sale_date datetime
+  sale_id UUID [primary key]
+  customer_id UUID
+  employee_id UUID
+  payment_method_id UUID
+  sale_date datetime2
   total decimal(10,2)
   status varchar(50)
 }
 
 Table sale_product {
-  sale_product_id int [primary key]
-  sale_id int
-  product_batch_id int
+  sale_product_id UUID [primary key]
+  sale_id UUID
+  product_batch_id UUID
   quantity int
   unit_price decimal(10,2)
   total_price decimal(10,2)
