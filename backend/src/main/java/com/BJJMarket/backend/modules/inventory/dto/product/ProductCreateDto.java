@@ -4,6 +4,7 @@
  */
 package com.BJJMarket.backend.modules.inventory.dto.product;
 
+import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,5 +24,5 @@ public class ProductCreateDto {
     private String description;
     private String sku;
     private String status;
-    private int category_id;
+    private UUID category_id;
 }
