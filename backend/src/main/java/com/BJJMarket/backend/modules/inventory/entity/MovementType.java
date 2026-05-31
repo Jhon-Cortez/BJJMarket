@@ -40,7 +40,7 @@ public class MovementType {
     private String name;
     
     @Column(name = "description", nullable = false, length = 50)
-    private int description;
+    private String description;
     
     @OneToMany(mappedBy = "movementType")
     private List<InventoryMovement> inventoryMovement = new ArrayList<>();
