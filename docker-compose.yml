@@ -1,25 +1,11 @@
 services:
-  #liquibase:
-   # image: liquibase/liquibase:5.0.1
-    #container_name: liquibase-container-SupermarketDB
-    #volumes:
-    #  - ./backend/src/main/resources/liquibase:/workspace/
-     # - ./backend/src/main/resources/liquibase/drivers/mssql-jdbc-13.4.0.jre8.jar:/liquibase/lib/mssql.jar
-    #command: >
-     # --defaultsFile=/workspace/liquibase.properties
-      #--searchPath=/workspace
-      #update
-    #depends_on:
-     # - sql-server
-    #networks:
-     # - sql-network
 
   sql-server:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: sql-server-container
     environment:
-      - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=SqlServer2026
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "SqlServer2026"
     ports:
       - "1433:1433"
     volumes:
@@ -27,17 +13,45 @@ services:
     restart: unless-stopped
     networks:
       - sql-network
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'SqlServer2026' -C -Q 'SELECT 1' || exit 1"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
 
+  db-init:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    depends_on:
+      sql-server:
+        condition: service_healthy
+    networks:
+      - sql-network
+    restart: "no"
+    command: >
+      /bin/bash -c "
+      /opt/mssql-tools18/bin/sqlcmd
+      -S sql-server
+      -U sa
+      -P 'SqlServer2026'
+      -C
+      -Q \"IF DB_ID('SupermarketDB') IS NULL CREATE DATABASE SupermarketDB\"
+      "
   backend:
     build: ./backend
     container_name: backend-BJJMarket
+    depends_on:
+      db-init:
+        condition: service_completed_successfully
     env_file:
       - ./backend/src/main/resources/.env
     ports:
-      - "8082:9090"
-    depends_on:
-      - sql-server
-    restart: always
+      - "8080:8080"
+    restart: unless-stopped
     networks:
       - sql-network
 
@@ -52,9 +66,7 @@ services:
       - ./frontend-web:/app
       - /app/node_modules
     environment:
-      - CHOKIDAR_USEPOLLING=true
-    networks:
-      - sql-network
+      CHOKIDAR_USEPOLLING: "true"
 
 networks:
   sql-network:

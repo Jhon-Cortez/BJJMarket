@@ -37,3 +37,4 @@ build/
 /docs/db.dbdiagram
 
 /src/main/resources/.env
+../docker-compose.yml
