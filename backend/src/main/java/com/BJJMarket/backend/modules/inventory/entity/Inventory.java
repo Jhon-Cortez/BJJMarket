@@ -32,7 +32,7 @@ public class Inventory {
     @Id
     @UuidGenerator
     @Column(name = "inventory_id")
-    private UUID category_id;
+    private UUID inventory_id;
     
     @Column(name = "available_stock", nullable = false)
     private int available_stock;

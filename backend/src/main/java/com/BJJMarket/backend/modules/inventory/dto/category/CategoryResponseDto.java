@@ -4,7 +4,11 @@
  */
 package com.BJJMarket.backend.modules.inventory.dto.category;
 
+import com.BJJMarket.backend.modules.inventory.util.Views;
+import com.fasterxml.jackson.annotation.JsonView;
+import java.util.UUID;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,7 +22,14 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class CategoryResponseDto {
+    @JsonView(Views.Summary.class)
+    private UUID category_id;
+    
+    @JsonView(Views.Summary.class)
     private String name;
+    
+    @JsonView(Views.Summary.class)
     private String description;
 }

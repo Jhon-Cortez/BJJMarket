@@ -4,8 +4,11 @@
  */
 package com.BJJMarket.backend.modules.inventory.dto.product;
 
+import com.BJJMarket.backend.modules.inventory.util.Views;
+import com.fasterxml.jackson.annotation.JsonView;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,10 +22,23 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class ProductResponseDto {
+    @JsonView(Views.Summary.class)
+    private UUID product_id;
+    
+    @JsonView(Views.Summary.class)
     private String name;
+    
+    @JsonView(Views.Summary.class)
     private String description;
+    
+    @JsonView(Views.Summary.class)
     private String sku;
+    
+    @JsonView(Views.Summary.class)
     private String status;
+    
+    @JsonView(Views.Summary.class)
     private UUID category_id;
 }

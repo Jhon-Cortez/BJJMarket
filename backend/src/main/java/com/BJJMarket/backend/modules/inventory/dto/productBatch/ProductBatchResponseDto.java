@@ -4,6 +4,8 @@
  */
 package com.BJJMarket.backend.modules.inventory.dto.productBatch;
 
+import com.BJJMarket.backend.modules.inventory.util.Views;
+import com.fasterxml.jackson.annotation.JsonView;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
@@ -21,9 +23,21 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductBatchResponseDto {
+    @JsonView(Views.Summary.class)
+    private UUID product_batch_id;
+    
+    @JsonView(Views.Summary.class)
     private String batch_code;
+    
+    @JsonView(Views.Summary.class)
     private int quantity;
+    
+    @JsonView(Views.Summary.class)
     private LocalDateTime expiration_date;
+    
+    @JsonView(Views.Summary.class)
     private UUID batch_status_id;
+    
+    @JsonView(Views.Summary.class)
     private UUID product_id;
 }
