@@ -3,39 +3,35 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.BJJMarket.backend.modules.inventory.entity;
+import com.BJJMarket.backend.shared.BaseEntity;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-
-import org.hibernate.annotations.UuidGenerator;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 /**
  *
  * @author juan
  */
 
-@Entity(name="movement_type")
+@Entity
+@Table(name="movement_type")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MovementType {
-    @Id
-    @GeneratedValue
-    @UuidGenerator
-    @Column(name = "movement_type_id")
-    private UUID movement_type_id;
-    
+@SuperBuilder
+@Builder
+public class MovementType extends BaseEntity {
     @Column(name = "name", nullable = false, length = 20)
     private String name;
     

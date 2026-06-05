@@ -1,35 +1,34 @@
 package com.BJJMarket.backend.modules.inventory.entity;
 
+import com.BJJMarket.backend.shared.BaseEntity;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import org.hibernate.annotations.UuidGenerator;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 /**
  *
  * @author juan
  */
 
-@Entity(name="batch_status")
+@Entity
+@Table(name="batch_status")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class BatchStatus {
-    @Id
-    @UuidGenerator
-    @Column(name="batch_status_id")
-    private UUID batch_status_id;
-
+@SuperBuilder
+@Builder
+public class BatchStatus extends BaseEntity {
     @Column(name="name", nullable = false, unique = true, length = 20)
     private String name;
 

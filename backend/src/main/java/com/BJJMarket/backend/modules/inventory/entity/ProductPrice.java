@@ -4,36 +4,34 @@
  */
 package com.BJJMarket.backend.modules.inventory.entity;
 
-import java.util.UUID;
-
+import com.BJJMarket.backend.shared.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
-import org.hibernate.annotations.UuidGenerator;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 /**
  *
  * @author juan
  */
 
-@Entity(name="product_price")
+@Entity
+@Table(name="product_price")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductPrice {
-    @Id
-    @UuidGenerator
-    @Column(name="product_price_id")
-    private UUID product_price_id;
-
+@SuperBuilder
+@Builder
+public class ProductPrice extends BaseEntity {
     @Column(name="price", nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
 

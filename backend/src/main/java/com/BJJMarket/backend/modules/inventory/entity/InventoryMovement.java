@@ -3,37 +3,36 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.BJJMarket.backend.modules.inventory.entity;
-import java.util.UUID;
-
-import org.hibernate.annotations.UuidGenerator;
+import com.BJJMarket.backend.shared.BaseEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 /**
  *
  * @author juan
  */
 
-@Entity(name="inventory_movement")
+@Entity
+@Table(name="inventory_movement")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class InventoryMovement {
-    @Id
-    @UuidGenerator
-    @Column(name = "inventory_movement_id")
-    private UUID category_movement_id;
-    
+@SuperBuilder
+@Builder
+public class InventoryMovement extends BaseEntity {
     @Column(name = "quantity", nullable = false)
     private int quantity;
     
@@ -56,4 +55,9 @@ public class InventoryMovement {
     @ManyToOne
     @JoinColumn(name="movement_type_id")
     private MovementType movementType;
+    
+    @PrePersist
+    protected void onCreate() {
+        created_at = LocalDateTime.now();
+    }
 }
