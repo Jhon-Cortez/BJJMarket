@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.BJJMarket.backend.modules.inventory.dto.productImage;
+package com.BJJMarket.backend.modules.inventory.dto.request;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,7 +20,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductImageCreateDto {
+public class ProductPriceRequestDto {
+    private BigDecimal price;
+    private boolean active;
     private UUID product_id;
-    private UUID image;
 }

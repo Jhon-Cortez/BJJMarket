@@ -2,9 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.BJJMarket.backend.modules.inventory.dto.productBatch;
+package com.BJJMarket.backend.modules.inventory.dto.request;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,10 +19,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductBatchCreateDto {
-    private String batch_code;
-    private int quantity;
-    private LocalDateTime expiration_date;
-    private UUID batch_status_id;
+public class InventoryRequestDto {
+    private int available_stock;
+    private int damaged_stock;
+    private int expired_stock;
     private UUID product_id;
 }

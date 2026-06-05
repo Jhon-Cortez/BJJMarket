@@ -2,13 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.BJJMarket.backend.modules.inventory.dto.productBatch;
+package com.BJJMarket.backend.modules.inventory.dto.response;
 
 import com.BJJMarket.backend.modules.inventory.util.Views;
 import com.fasterxml.jackson.annotation.JsonView;
-import java.time.LocalDateTime;
+import java.math.BigDecimal;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,21 +23,16 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductBatchResponseDto {
+@Builder
+public class ProductPriceResponseDto {
     @JsonView(Views.Summary.class)
-    private UUID product_batch_id;
+    private UUID product_price_id;
     
     @JsonView(Views.Summary.class)
-    private String batch_code;
+    private BigDecimal price;
     
     @JsonView(Views.Summary.class)
-    private int quantity;
-    
-    @JsonView(Views.Summary.class)
-    private LocalDateTime expiration_date;
-    
-    @JsonView(Views.Summary.class)
-    private UUID batch_status_id;
+    private boolean active;
     
     @JsonView(Views.Summary.class)
     private UUID product_id;

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.BJJMarket.backend.modules.inventory.dto.batchStatus;
+package com.BJJMarket.backend.modules.inventory.dto.response;
 
 import com.BJJMarket.backend.modules.inventory.util.Views;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -23,9 +23,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class BatchStatusResponseDto {
+public class MovementTypeResponseDto {
     @JsonView(Views.Summary.class)
-    private UUID batch_status_id;
+    private UUID movement_type_id;
     
     @JsonView(Views.Summary.class)
     private String name;

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.BJJMarket.backend.modules.inventory.dto.productImage;
+package com.BJJMarket.backend.modules.inventory.dto.response;
 
 import com.BJJMarket.backend.modules.inventory.util.Views;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -23,13 +23,22 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ProductImageResponseDto {
-    @JsonView(Views.Summary.class)
-    private UUID product_image_id;
-    
+public class ProductResponseDto {
     @JsonView(Views.Summary.class)
     private UUID product_id;
     
     @JsonView(Views.Summary.class)
-    private UUID image;
+    private String name;
+    
+    @JsonView(Views.Summary.class)
+    private String description;
+    
+    @JsonView(Views.Summary.class)
+    private String sku;
+    
+    @JsonView(Views.Summary.class)
+    private String status;
+    
+    @JsonView(Views.Summary.class)
+    private UUID category_id;
 }
