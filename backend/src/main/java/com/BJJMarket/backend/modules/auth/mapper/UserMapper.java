@@ -1,18 +1,14 @@
 package com.BJJMarket.backend.modules.auth.mapper;
 
-import org.springframework.stereotype.Component;
-
 import com.BJJMarket.backend.modules.auth.dto.response.UserResponse;
 import com.BJJMarket.backend.modules.auth.entity.Users;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
-@Component
-public class UserMapper {
-    public UserResponse toResponse(Users user){
-        return UserResponse.builder()
-                .userId(user.getUserId())
-                .username(user.getUsername())
-                .email(user.getPerson().getEmail())
-                .status(user.getUserStatus().getName())
-                .build();
-    }
+@Mapper(componentModel = "spring")
+public interface UserMapper {
+
+    @Mapping(target = "email", source = "person.email")
+    @Mapping(target = "status", source = "UserStatus.name")
+    UserResponse toResponse(Users user);
 }
