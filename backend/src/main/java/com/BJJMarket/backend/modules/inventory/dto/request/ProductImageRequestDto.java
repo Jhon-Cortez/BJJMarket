@@ -22,4 +22,5 @@ import lombok.Setter;
 public class ProductImageRequestDto {
     private UUID product_id;
     private UUID image;
+    private String status;
 }

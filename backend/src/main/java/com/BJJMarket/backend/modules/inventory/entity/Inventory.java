@@ -17,7 +17,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
-import lombok.Builder;
 import lombok.experimental.SuperBuilder;
 
 /**
@@ -31,7 +30,6 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@Builder
 public class Inventory extends BaseEntity {
     @Column(name = "available_stock", nullable = false)
     private int available_stock;
@@ -42,10 +40,10 @@ public class Inventory extends BaseEntity {
     @Column(name = "expired_stock", nullable = false)
     private int expired_stock;
     
-    // @Column(name = "updated_at", nullable = false)
-    // private LocalDateTime updated_at;
+    @Column(name = "updated_at", nullable = false)
+    private LocalDateTime updated_at;
     
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private Product product_id;
+    private Product productId;
 }

@@ -25,8 +25,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 public class InventoryResponseDto {
-    @JsonView(Views.Summary.class)
-    private UUID inventory_id;
+    @JsonView(Views.Detail.class)
+    private UUID id;
     
     @JsonView(Views.Summary.class)
     private int available_stock;
@@ -42,4 +42,7 @@ public class InventoryResponseDto {
     
     @JsonView(Views.Summary.class)
     private LocalDateTime updated_at;
+
+    @JsonView(Views.Detail.class)
+    private String status;
 }

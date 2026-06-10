@@ -24,4 +24,5 @@ public class InventoryRequestDto {
     private int damaged_stock;
     private int expired_stock;
     private UUID product_id;
+    private String status;
 }

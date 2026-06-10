@@ -9,7 +9,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,7 +26,6 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@Builder
 public class BatchStatus extends BaseEntity {
     @Column(name="name", nullable = false, unique = true, length = 20)
     private String name;
@@ -35,6 +33,6 @@ public class BatchStatus extends BaseEntity {
     @Column(name="description", nullable = false, length = 50)
     private String description;
 
-    @OneToMany(mappedBy = "batch_status_id")
+    @OneToMany(mappedBy = "batchStatusId")
     private List<ProductBatch> batchEstatus = new ArrayList<>();
 }

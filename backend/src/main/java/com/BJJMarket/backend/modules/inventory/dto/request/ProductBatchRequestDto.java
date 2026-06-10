@@ -26,4 +26,5 @@ public class ProductBatchRequestDto {
     private LocalDateTime expiration_date;
     private UUID batch_status_id;
     private UUID product_id;
+    private String status;
 }

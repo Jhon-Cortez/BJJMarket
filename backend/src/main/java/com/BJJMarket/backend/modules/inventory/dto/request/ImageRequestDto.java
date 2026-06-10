@@ -20,4 +20,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ImageRequestDto {
     private String url;
+    
+    private String status;
 }

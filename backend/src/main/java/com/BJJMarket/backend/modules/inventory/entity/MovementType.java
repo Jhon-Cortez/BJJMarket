@@ -12,7 +12,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,7 +29,6 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@Builder
 public class MovementType extends BaseEntity {
     @Column(name = "name", nullable = false, length = 20)
     private String name;
@@ -38,6 +36,6 @@ public class MovementType extends BaseEntity {
     @Column(name = "description", nullable = false, length = 50)
     private String description;
     
-    @OneToMany(mappedBy = "movementType")
+    @OneToMany(mappedBy = "movementTypeId")
     private List<InventoryMovement> inventoryMovement = new ArrayList<>();
 }

@@ -24,9 +24,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 public class ImageResponseDto {
-    @JsonView(Views.Summary.class)
-    private UUID image_id;
+    @JsonView(Views.Detail.class)
+    private UUID id;
     
     @JsonView(Views.Summary.class)
     private String url;
+    
+    @JsonView(Views.Detail.class)
+    private String status;
 }

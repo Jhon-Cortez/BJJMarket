@@ -24,4 +24,5 @@ public class ProductPriceRequestDto {
     private BigDecimal price;
     private boolean active;
     private UUID product_id;
+    private String status;
 }

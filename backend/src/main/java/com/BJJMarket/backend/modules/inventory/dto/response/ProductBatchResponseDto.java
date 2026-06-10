@@ -23,8 +23,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductBatchResponseDto {
-    @JsonView(Views.Summary.class)
-    private UUID product_batch_id;
+    @JsonView(Views.Detail.class)
+    private UUID id;
     
     @JsonView(Views.Summary.class)
     private String batch_code;
@@ -40,4 +40,7 @@ public class ProductBatchResponseDto {
     
     @JsonView(Views.Summary.class)
     private UUID product_id;
+
+    @JsonView(Views.Detail.class)
+    private String status;
 }

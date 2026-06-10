@@ -13,7 +13,6 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -31,7 +30,6 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@Builder
 public class InventoryMovement extends BaseEntity {
     @Column(name = "quantity", nullable = false)
     private int quantity;
@@ -50,11 +48,11 @@ public class InventoryMovement extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name="product_batch_id")
-    private ProductBatch productBatch;
+    private ProductBatch productBatchId;
     
     @ManyToOne
     @JoinColumn(name="movement_type_id")
-    private MovementType movementType;
+    private MovementType movementTypeId;
     
     @PrePersist
     protected void onCreate() {

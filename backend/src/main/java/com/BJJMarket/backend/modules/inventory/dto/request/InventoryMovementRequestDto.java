@@ -28,4 +28,5 @@ public class InventoryMovementRequestDto {
     private LocalDateTime created_at;
     private UUID product_batch_id;
     private UUID movement_type_id;
+    private String status;
 }

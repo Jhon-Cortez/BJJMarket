@@ -24,8 +24,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 public class ProductResponseDto {
-    @JsonView(Views.Summary.class)
-    private UUID product_id;
+    @JsonView(Views.Detail.class)
+    private UUID id;
     
     @JsonView(Views.Summary.class)
     private String name;

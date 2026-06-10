@@ -24,12 +24,15 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 public class CategoryResponseDto {
-    @JsonView(Views.Summary.class)
-    private UUID category_id;
+    @JsonView(Views.Detail.class)
+    private UUID id;
     
     @JsonView(Views.Summary.class)
     private String name;
     
     @JsonView(Views.Summary.class)
     private String description;
+
+    @JsonView(Views.Detail.class)
+    private String status;
 }

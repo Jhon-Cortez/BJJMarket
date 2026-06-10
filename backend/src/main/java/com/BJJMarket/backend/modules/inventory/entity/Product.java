@@ -11,7 +11,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,7 +28,6 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@Builder
 public class Product extends BaseEntity {
     @Column(name="name", nullable = false, unique = true, length = 50)
     private String name;
@@ -42,17 +40,17 @@ public class Product extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name="category_id")
-    private Category category_id;
+    private Category categoryId;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "productId")
     private List<ProductImage> productImages = new ArrayList<>();
 
-    @OneToMany(mappedBy = "product_id")
+    @OneToMany(mappedBy = "productId")
     private List<ProductBatch> productBatches = new ArrayList<>();
     
-    @OneToMany(mappedBy = "product_id")
+    @OneToMany(mappedBy = "productId")
     private List<Inventory> inventory = new ArrayList<>();
     
-    @OneToMany(mappedBy = "product_id")
+    @OneToMany(mappedBy = "productId")
     private List<ProductPrice> productPrice = new ArrayList<>();
 }

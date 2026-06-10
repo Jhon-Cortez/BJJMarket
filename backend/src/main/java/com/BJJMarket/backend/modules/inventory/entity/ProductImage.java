@@ -6,7 +6,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,13 +23,12 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@Builder
 public class ProductImage extends BaseEntity {
     @ManyToOne
     @JoinColumn(name="product_id")
-    private Product product;
+    private Product productId;
 
     @ManyToOne
     @JoinColumn(name="image_id")
-    private Image image;
+    private Image imageId;
 }

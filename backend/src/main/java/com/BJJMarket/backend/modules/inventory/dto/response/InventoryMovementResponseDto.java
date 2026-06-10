@@ -25,8 +25,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 public class InventoryMovementResponseDto {
-    @JsonView(Views.Summary.class)
-    private UUID category_movement_id;
+    @JsonView(Views.Detail.class)
+    private UUID id;
     
     @JsonView(Views.Summary.class)
     private int quantity;
@@ -48,4 +48,7 @@ public class InventoryMovementResponseDto {
     
     @JsonView(Views.Summary.class)
     private UUID movement_type_id;
+    
+    @JsonView(Views.Detail.class)
+    private String status;
 }

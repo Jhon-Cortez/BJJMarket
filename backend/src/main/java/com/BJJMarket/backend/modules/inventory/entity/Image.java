@@ -9,7 +9,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,11 +26,10 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@Builder
 public class Image extends BaseEntity {
     @Column(name="url", nullable = false, unique = true, length = 255)
     private String url;
 
-    @OneToMany(mappedBy = "image")
+    @OneToMany(mappedBy = "imageId")
     private List<ProductImage> productImages = new ArrayList<>();
 }

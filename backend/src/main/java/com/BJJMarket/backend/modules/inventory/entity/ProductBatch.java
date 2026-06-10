@@ -12,7 +12,6 @@ import jakarta.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,7 +29,6 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@Builder
 public class ProductBatch extends BaseEntity {
     @Column(name="batch_code", nullable = false, unique = true, length = 100)
     private String batch_code;
@@ -43,11 +41,11 @@ public class ProductBatch extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "batch_status_id")
-    private BatchStatus batch_status_id;
+    private BatchStatus batchStatusId;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private Product product_id;
+    private Product productId;
     
     @OneToMany(mappedBy = "productBatch")
     private List<InventoryMovement> inventoryMovement = new ArrayList<>();

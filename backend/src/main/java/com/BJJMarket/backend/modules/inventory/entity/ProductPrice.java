@@ -12,7 +12,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,7 +29,6 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@Builder
 public class ProductPrice extends BaseEntity {
     @Column(name="price", nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
@@ -39,6 +37,6 @@ public class ProductPrice extends BaseEntity {
     private boolean active;
 
     @ManyToOne
-    @JoinColumn(name="produt_id")
-    private Product product_id;
+    @JoinColumn(name="product_id")
+    private Product productId;
 }
