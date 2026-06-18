@@ -41,11 +41,32 @@ services:
       -C
       -Q \"IF DB_ID('SupermarketDB') IS NULL CREATE DATABASE SupermarketDB\"
       "
+  liquibase:
+    image: liquibase/liquibase:5.0.1
+    container_name: liquibase-container
+
+    depends_on:
+      db-init:
+        condition: service_completed_successfully
+
+    volumes:
+      - ./backend/src/main/resources/liquibase:/workspace/
+      - ./backend/src/main/resources/liquibase/drivers/mssql-jdbc-13.4.0.jre11.jar:/liquibase/lib/mssql-jdbc.jar
+
+    command: >
+      --defaultsFile=/workspace/liquibase.properties
+      --searchPath=/workspace
+      update
+
+    networks:
+      - sql-network
+    restart: "no"
+
   backend:
     build: ./backend
     container_name: backend-BJJMarket
     depends_on:
-      db-init:
+      liquibase:
         condition: service_completed_successfully
     env_file:
       - ./backend/src/main/resources/.env

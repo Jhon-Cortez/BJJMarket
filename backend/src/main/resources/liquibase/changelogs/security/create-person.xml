@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="security-001-create-person" author="Jhon-Cortez">
+        <createTable
+                tableName="person"
+                remarks="Tabla que almacena los datos personales de los usuarios">
+
+            <column name="person_id" type="uniqueidentifier">
+                <constraints primaryKey="true"
+                             nullable="false"/>
+            </column>
+
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="last_name" type="VARCHAR(60)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="birth_date" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="phone" type="VARCHAR(20)"/>
+
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"
+                             unique="true"/>
+            </column>
+
+            <column name="create_at" type="DATETIME2(3)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="update_at" type="DATETIME2(3)"/>
+
+            <column name="active" type="BIT"
+                    defaultValueBoolean = "true">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

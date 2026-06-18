@@ -3,6 +3,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
-    
-    <include file="changelogs/create-tables.xml"/>
+
+                        <include file="changelogs/security/create-person.xml"/>
+                        <include file="changelogs/security/create-user_status.xml"/>   
+                        <include file="changelogs/security/create-users.xml"/>
+                        <include file="changelogs/security/create-role.xml"/>
+                        <include file="changelogs/security/create-user_role.xml"/>
 </databaseChangeLog>

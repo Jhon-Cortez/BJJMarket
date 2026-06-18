@@ -40,6 +40,6 @@ public class Users {
 
     @Column(name = "username", columnDefinition = "VARCHAR(30)", nullable = false, unique = true)
     private String username;
-    @Column(name = "password", columnDefinition = "VARCHAR(255)")
+    @Column(name = "password", columnDefinition = "VARCHAR(255)", nullable = false)
     private String password;
 }

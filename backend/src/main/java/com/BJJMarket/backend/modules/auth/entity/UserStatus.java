@@ -19,7 +19,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserStatus {
     @Id
-    @Column(name = "user_status_id")
+    @Column(name = "user_status_id", updatable = false, nullable = false)
     private Integer userStatusId;
 
     @Column(name = "name", columnDefinition = "VARCHAR(30)", nullable = false, unique = true)

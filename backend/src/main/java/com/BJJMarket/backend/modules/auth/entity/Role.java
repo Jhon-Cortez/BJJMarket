@@ -23,9 +23,9 @@ public class Role{
     @Column(name = "role_id")
     private Integer roleId;
 
-    @Column(name = "name", columnDefinition = "VARCHAR(60)", nullable = false, unique = true)
+    @Column(name = "name", columnDefinition = "VARCHAR(10)", nullable = false, unique = true)
     private String name;
 
-    @Column(name = "description", columnDefinition = "VARCHAR(100)")
+    @Column(name = "description", columnDefinition = "VARCHAR(50)")
     private String description;
 }

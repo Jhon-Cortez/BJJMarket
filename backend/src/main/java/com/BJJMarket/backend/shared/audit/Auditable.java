@@ -15,4 +15,6 @@ public abstract class Auditable {
     private LocalDateTime createAt;
     @Column(name = "update_at")
     private LocalDateTime updateAt;
+    @Column(name = "status")
+    private boolean active;
 }

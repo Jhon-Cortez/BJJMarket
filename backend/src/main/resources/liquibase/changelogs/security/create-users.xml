@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="security-004-create-users" author="Jhon-Cortez">
+        <createTable
+                tableName="users">
+
+            <column name="user_id" type="uniqueidentifier">
+                <constraints primaryKey="true"
+                             nullable="false"/>
+            </column>
+
+            <column name="person_id" type="uniqueidentifier">
+                <constraints nullable="false"
+                             unique = "true"/>
+            </column>
+
+            <column name="user_status_id" type="INT"/>
+
+            <column name="username" type="VARCHAR(30)">
+                <constraints nullable = "false"
+                             unique = "true"/>
+            </column>
+            <column name="password" type="VARCHAR(100)"/>
+            <column name="create_at" type="DATETIME2(3)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="update_at" type="DATETIME2(3)"/>
+
+            <column name="active" type="BIT"
+                    defaultValueBoolean = "true">
+                <constraints nullable="false"/>
+            </column>
+
+
+            
+        </createTable>
+        <addForeignKeyConstraint
+                baseTableName="users"
+                baseColumnNames="person_id"
+                referencedTableName="person"
+                referencedColumnNames="person_id"
+                constraintName="fk_users_person"/>
+
+        <addForeignKeyConstraint
+                baseTableName="users"
+                baseColumnNames="user_status_id"
+                referencedTableName="user_status"
+                referencedColumnNames="user_status_id"
+                constraintName="fk_users_user_status"/>
+    </changeSet>
+</databaseChangeLog>
