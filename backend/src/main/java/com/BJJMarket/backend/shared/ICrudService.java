@@ -17,9 +17,9 @@ public interface ICrudService<ResponseDTO, RequestDTO, UUID> {
 
     ResponseDTO save(RequestDTO dto);
 
-    ResponseDTO update(RequestDTO dto);
+    ResponseDTO update(UUID id, RequestDTO dto);
     
-    ResponseDTO updatePartial(RequestDTO dto);
+    ResponseDTO updatePartial(UUID id, RequestDTO dto);
     
     void delete(UUID id);
     
