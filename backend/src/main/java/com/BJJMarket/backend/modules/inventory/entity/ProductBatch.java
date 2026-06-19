@@ -47,6 +47,6 @@ public class ProductBatch extends BaseEntity {
     @JoinColumn(name = "product_id")
     private Product productId;
     
-    @OneToMany(mappedBy = "productBatch")
+    @OneToMany(mappedBy = "productBatchId")
     private List<InventoryMovement> inventoryMovement = new ArrayList<>();
 }
