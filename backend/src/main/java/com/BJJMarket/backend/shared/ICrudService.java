@@ -10,12 +10,18 @@ import java.util.List;
  *
  * @author juan
  */
-public interface ICrudService<ResponseDTO, RequestDTO, ID> {
+public interface ICrudService<ResponseDTO, RequestDTO, UUID> {
     List<ResponseDTO> findAll();
 
-    ResponseDTO findById(ID id);
+    ResponseDTO findById(UUID id);
 
     ResponseDTO save(RequestDTO dto);
 
-    void delete(ID id);
+    ResponseDTO update(UUID id, RequestDTO dto);
+    
+    ResponseDTO updatePartial(UUID id, RequestDTO dto);
+    
+    void delete(UUID id);
+    
+    void deletePartial(UUID id);
 }
