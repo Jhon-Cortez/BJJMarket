@@ -4,11 +4,14 @@
  */
 package com.BJJMarket.backend.modules.inventory.mappers;
 
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.ReportingPolicy;
+
 import com.BJJMarket.backend.modules.inventory.dto.request.InventoryRequestDto;
 import com.BJJMarket.backend.modules.inventory.dto.response.InventoryResponseDto;
 import com.BJJMarket.backend.modules.inventory.entity.Inventory;
-import org.mapstruct.Mapper;
-import org.mapstruct.ReportingPolicy;
 
 /**
  *
@@ -19,4 +22,7 @@ import org.mapstruct.ReportingPolicy;
 public interface InventoryMapper {
     Inventory toEntity(InventoryRequestDto dto);
     InventoryResponseDto toResponse(Inventory inventory);
+
+    @Mapping(target = "productId", ignore = true)
+    void update(InventoryRequestDto dto, @MappingTarget Inventory inventory);
 }

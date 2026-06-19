@@ -6,6 +6,7 @@ package com.BJJMarket.backend.modules.inventory.mappers;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 import com.BJJMarket.backend.modules.inventory.dto.request.ImageRequestDto;
 import com.BJJMarket.backend.modules.inventory.dto.response.ImageResponseDto;
@@ -23,4 +24,8 @@ public interface ImageMapper {
     Image toEntity(ImageRequestDto dto);
     
     ImageResponseDto toResponse(Image image);
+    
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "productImages", ignore = true)
+    void update(ImageRequestDto dto, @MappingTarget Image image);
 }

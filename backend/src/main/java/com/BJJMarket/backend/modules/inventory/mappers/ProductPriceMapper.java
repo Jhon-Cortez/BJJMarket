@@ -4,11 +4,13 @@
  */
 package com.BJJMarket.backend.modules.inventory.mappers;
 
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
+
 import com.BJJMarket.backend.modules.inventory.dto.request.ProductPriceRequestDto;
 import com.BJJMarket.backend.modules.inventory.dto.response.ProductPriceResponseDto;
 import com.BJJMarket.backend.modules.inventory.entity.ProductPrice;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 /**
  *
@@ -23,4 +25,8 @@ public interface ProductPriceMapper {
     
     @Mapping(target = "product_id", source = "productId.id")
     ProductPriceResponseDto toResponse(ProductPrice productPrice);
+
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "productId", ignore = true)
+    void update(ProductPriceRequestDto dto, @MappingTarget ProductPrice productPrice);
 }

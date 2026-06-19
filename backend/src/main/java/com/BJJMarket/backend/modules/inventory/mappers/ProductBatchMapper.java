@@ -6,6 +6,7 @@ package com.BJJMarket.backend.modules.inventory.mappers;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 import com.BJJMarket.backend.modules.inventory.dto.request.ProductBatchRequestDto;
 import com.BJJMarket.backend.modules.inventory.dto.response.ProductBatchResponseDto;
@@ -27,4 +28,10 @@ public interface ProductBatchMapper {
     @Mapping(target = "product_id", source="productId.id")
     @Mapping(target = "batch_status_id", source="batchStatusId.id")
     ProductBatchResponseDto toResponse(ProductBatch productBatch);
+
+    @Mapping(target = "productId", ignore = true)
+    @Mapping(target = "batchStatusId", ignore = true)
+    @Mapping(target = "inventoryMovement", ignore = true)
+    @Mapping(target = "id", ignore = true)
+    void update(ProductBatchRequestDto dto, @MappingTarget ProductBatch productBatch);
 }
