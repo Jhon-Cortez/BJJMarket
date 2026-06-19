@@ -4,6 +4,7 @@
  */
 package com.BJJMarket.backend.modules.inventory.dto.request;
 
+import jakarta.validation.constraints.NotBlank;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,9 +21,12 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class InventoryRequestDto {
+    @NotBlank(message="La cantidad existente es requerida")
     private int available_stock;
+    @NotBlank(message="La cantidad dañada es requerida")
     private int damaged_stock;
+    @NotBlank(message="La cantidad caducada es requeirda")
     private int expired_stock;
+    @NotBlank(message="El producto es requeirdo")
     private UUID product_id;
-    private String status;
 }

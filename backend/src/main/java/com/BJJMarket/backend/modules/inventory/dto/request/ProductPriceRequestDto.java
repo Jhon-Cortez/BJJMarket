@@ -4,6 +4,7 @@
  */
 package com.BJJMarket.backend.modules.inventory.dto.request;
 
+import jakarta.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
@@ -21,8 +22,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductPriceRequestDto {
+    @NotBlank(message = "El precio es requerido")
     private BigDecimal price;
-    private boolean active;
+    @NotBlank(message = "El producto es requerido")
     private UUID product_id;
-    private String status;
 }

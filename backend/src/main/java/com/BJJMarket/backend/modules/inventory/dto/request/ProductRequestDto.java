@@ -4,6 +4,7 @@
  */
 package com.BJJMarket.backend.modules.inventory.dto.request;
 
+import jakarta.validation.constraints.NotBlank;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,9 +21,12 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductRequestDto {
+    @NotBlank(message = "El nombre es requerido")
     private String name;
+    @NotBlank(message = "La descripcion es requerida")
     private String description;
+    @NotBlank(message = "El SKU es requerido")
     private String sku;
-    private String status;
+    @NotBlank(message = "La categoria es requerida")
     private UUID category_id;
 }

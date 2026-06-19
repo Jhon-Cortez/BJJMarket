@@ -4,6 +4,7 @@
  */
 package com.BJJMarket.backend.modules.inventory.dto.request;
 
+import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
@@ -21,10 +22,14 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductBatchRequestDto {
+    @NotBlank(message = "El codigo es requerido")
     private String batch_code;
+    @NotBlank(message = "La cantidad es requerida")
     private int quantity;
+    @NotBlank(message = "La fecha es requerida")
     private LocalDateTime expiration_date;
+    @NotBlank(message = "El estado del lote es requerido")
     private UUID batch_status_id;
+    @NotBlank(message = "El producto es requerido")
     private UUID product_id;
-    private String status;
 }
