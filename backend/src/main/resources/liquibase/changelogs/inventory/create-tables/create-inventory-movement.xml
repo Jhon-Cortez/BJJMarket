@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="inventory-001-create-inventory-movement" author="Juan Pablo">
+        <createTable tableName="inventory_movement" remarks="Tabla que almacena los movimientos de inventario">
+
+            <column name="id"  type="uniqueidentifier" defaultValueComputed="NEWID()">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="quantity" type="INT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="previous_stock" type="INT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="reasson" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="new_stock" type="INT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_at" type="datetime2">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="product_batch_id" type="uniqueidentifier">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="movement_type_id" type="uniqueidentifier">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="status" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <addForeignKeyConstraint
+                baseTableName="inventory_movement"
+                baseColumnNames="product_batch_id"
+                referencedTableName="product_batch"
+                referencedColumnNames="id"
+                constraintName="fk_inventory_movement_batch"/>
+
+        <addForeignKeyConstraint
+                baseTableName="inventory_movement"
+                baseColumnNames="movement_type_id"
+                referencedTableName="movement_type"
+                referencedColumnNames="id"
+                constraintName="fk_inventory_movement_type"/>
+    </changeSet>
+</databaseChangeLog>
