@@ -4,6 +4,7 @@
  */
 package com.BJJMarket.backend.shared;
 
+import jakarta.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +38,7 @@ public abstract class AbstractCrudController<ResponseDTO, RequestDTO> {
     }
     
     @PostMapping
-    public ResponseEntity<ResponseDTO> save(@RequestBody RequestDTO dto) {
+    public ResponseEntity<ResponseDTO> save(@RequestBody @Valid RequestDTO dto) {
         return ResponseEntity.ok(service.save(dto));
     }
     
