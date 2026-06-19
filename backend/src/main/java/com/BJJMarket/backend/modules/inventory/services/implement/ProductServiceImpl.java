@@ -10,6 +10,7 @@ import com.BJJMarket.backend.modules.inventory.entity.Product;
 import com.BJJMarket.backend.modules.inventory.mappers.ProductMapper;
 import com.BJJMarket.backend.modules.inventory.repository.ProductRepository;
 import com.BJJMarket.backend.shared.AbstractCrudService;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 /**
@@ -39,5 +40,21 @@ public class ProductServiceImpl extends AbstractCrudService<Product, ProductRequ
     @Override
     protected void merge(ProductRequestDto dto, Product product) {
         productMapper.update(dto, product);
+    }
+    
+    @Override
+    public ProductResponseDto save(ProductRequestDto dto) {
+        List<Product> product = repository.findAll();
+    
+        for (Product p : product) {
+            if (p.getName().equals(dto.getName())) {
+                throw new RuntimeException("El nombre " + dto.getName() + " ya existe.");
+            }
+            if (p.getSku().equals(dto.getSku())) {
+                throw new RuntimeException("El SKU " + dto.getSku() + " ya existe.");
+            }
+        }
+    
+        return super.save(dto);
     }
 }

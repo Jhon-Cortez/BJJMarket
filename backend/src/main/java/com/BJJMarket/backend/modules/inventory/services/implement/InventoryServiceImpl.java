@@ -6,6 +6,7 @@ import com.BJJMarket.backend.modules.inventory.entity.Inventory;
 import com.BJJMarket.backend.modules.inventory.mappers.InventoryMapper;
 import com.BJJMarket.backend.modules.inventory.repository.InventoryRepository;
 import com.BJJMarket.backend.shared.AbstractCrudService;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -30,5 +31,18 @@ public class InventoryServiceImpl extends AbstractCrudService<Inventory, Invento
     @Override
     protected void merge(InventoryRequestDto dto, Inventory inventory) {
         inventoryMapper.update(dto, inventory);
+    }
+    
+    @Override
+    public InventoryResponseDto save(InventoryRequestDto dto) {
+        List<Inventory> inventory = repository.findAll();
+    
+        for (Inventory i : inventory) {
+            if (i.getProductId().equals(dto.getProduct_id())) {
+                throw new RuntimeException("El nombre " + dto.getProduct_id() + " ya existe.");
+            }
+        }
+    
+        return super.save(dto);
     }
 }
