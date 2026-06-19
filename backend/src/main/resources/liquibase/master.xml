@@ -4,5 +4,31 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
     
-    <include file="changelogs/create-tables.xml"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <include file="changelogs/inventory/create-tables/create-image.xml"/>
+    <include file="changelogs/inventory/create-tables/create-category.xml"/>
+    <include file="changelogs/inventory/create-tables/create-product.xml"/>
+    <include file="changelogs/inventory/create-tables/create-batch-status.xml"/>
+    <include file="changelogs/inventory/create-tables/create-product-batch.xml"/>
+    <include file="changelogs/inventory/create-tables/create-movement-type.xml"/>
+    <include file="changelogs/inventory/create-tables/create-product-price.xml"/>
+    <include file="changelogs/inventory/create-tables/create-product-image.xml"/>
+    <include file="changelogs/inventory/create-tables/create-inventory.xml"/>
+    <include file="changelogs/inventory/create-tables/create-inventory-movement.xml"/>
+    <include file="changelogs/inventory/insert/insert-image.xml"/>
 </databaseChangeLog>
