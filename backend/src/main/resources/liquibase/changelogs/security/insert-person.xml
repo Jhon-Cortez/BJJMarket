@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="security-001-insert-person" author="Jhon-Cortez">
+        <insert tableName="person">
+            <column name="person_id" value=""/>
+            <column name="name" value="ACTIVO"/>
+            <column name="description" value="Usuario activo en la plataforma"/>
+            <column name="create_at" valueComputed="GETDATE()"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

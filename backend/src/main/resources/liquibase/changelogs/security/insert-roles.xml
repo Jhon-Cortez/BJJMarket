@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="security-006-insert-roles" author="Jhon-Cortez">
+        <insert tableName="role">
+            <column name="role_id" value="1"/>
+            <column name="name" value="ADMIN"/>
+            <column name="description" value="Administrador del sistema"/>
+            <column name="create_at" valueComputed="GETDATE()"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="role">
+            <column name="role_id" value="2"/>
+            <column name="name" value="SELLER"/>
+            <column name="description" value="Vendedor de equipamiento BJJ"/>
+            <column name="create_at" valueComputed="GETDATE()"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="role">
+            <column name="role_id" value="3"/>
+            <column name="name" value="BUYER"/>
+            <column name="description" value="Comprador de equipamiento BJJ"/>
+            <column name="create_at" valueComputed="GETDATE()"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="role">
+            <column name="role_id" value="4"/>
+            <column name="name" value="MODERATOR"/>
+            <column name="description" value="Moderador de la plataforma"/>
+            <column name="create_at" valueComputed="GETDATE()"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -4,9 +4,14 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-                        <include file="changelogs/security/create-person.xml"/>
-                        <include file="changelogs/security/create-user_status.xml"/>   
-                        <include file="changelogs/security/create-users.xml"/>
-                        <include file="changelogs/security/create-role.xml"/>
-                        <include file="changelogs/security/create-user_role.xml"/>
+    <!-- Creación de tablas -->
+    <include file="changelogs/security/create-person.xml"/>
+    <include file="changelogs/security/create-user_status.xml"/>   
+    <include file="changelogs/security/create-role.xml"/>
+    <include file="changelogs/security/create-users.xml"/>
+    <include file="changelogs/security/create-user_role.xml"/>
+    
+    <!-- Inserción de datos iniciales (seed data) -->
+    <include file="changelogs/security/insert-user-status.xml"/>
+    <include file="changelogs/security/insert-roles.xml"/>
 </databaseChangeLog>

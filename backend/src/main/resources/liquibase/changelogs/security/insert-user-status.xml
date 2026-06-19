@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="security-005-insert-user-status" author="Jhon-Cortez">
+        <insert tableName="user_status">
+            <column name="user_status_id" value="1"/>
+            <column name="name" value="ACTIVO"/>
+            <column name="description" value="Usuario activo en la plataforma"/>
+            <column name="create_at" valueComputed="GETDATE()"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="user_status">
+            <column name="user_status_id" value="2"/>
+            <column name="name" value="INACTIVO"/>
+            <column name="description" value="Usuario inactivo"/>
+            <column name="create_at" valueComputed="GETDATE()"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="user_status">
+            <column name="user_status_id" value="3"/>
+            <column name="name" value="SUSPENDIDO"/>
+            <column name="description" value="Usuario suspendido temporalmente"/>
+            <column name="create_at" valueComputed="GETDATE()"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="user_status">
+            <column name="user_status_id" value="4"/>
+            <column name="name" value="BLOQUEADO"/>
+            <column name="description" value="Usuario bloqueado por razones de seguridad"/>
+            <column name="create_at" valueComputed="GETDATE()"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
