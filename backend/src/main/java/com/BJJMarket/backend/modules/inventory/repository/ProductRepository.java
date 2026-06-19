@@ -13,6 +13,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author juan
  */
 public interface ProductRepository extends JpaRepository<Product, UUID> {
-    boolean existsByName(String name);
-    boolean existsBySku(String sku);
+    
 }

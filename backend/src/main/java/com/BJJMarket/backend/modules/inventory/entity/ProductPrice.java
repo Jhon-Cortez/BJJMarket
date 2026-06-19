@@ -33,9 +33,6 @@ public class ProductPrice extends BaseEntity {
     @Column(name="price", nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
 
-    @Column(name="active", nullable = false)
-    private boolean active;
-
     @ManyToOne
     @JoinColumn(name="product_id")
     private Product productId;
