@@ -35,7 +35,7 @@ services:
     env_file:
       - ./backend/src/main/resources/.env
     ports:
-      - "8080:8080"
+      - "9090:9090"
     depends_on:
       - sql-server
     restart: always
