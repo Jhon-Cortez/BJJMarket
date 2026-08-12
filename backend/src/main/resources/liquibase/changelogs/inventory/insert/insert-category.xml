@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="inventory-002-insert-category" author="Jhon-Cortez">
+        <insert tableName="category">
+            <column name="id" value="11111111-1111-1111-1111-111111111101"/>
+            <column name="name" value="Gi"/>
+            <column name="description" value="Kimonos para Jiu-Jitsu"/>
+            <column name="status" value="active"/>
+        </insert>
+
+        <insert tableName="category">
+            <column name="id" value="11111111-1111-1111-1111-111111111102"/>
+            <column name="name" value="Rashguard"/>
+            <column name="description" value="Camisetas de compresion"/>
+            <column name="status" value="active"/>
+        </insert>
+
+        <insert tableName="category">
+            <column name="id" value="11111111-1111-1111-1111-111111111103"/>
+            <column name="name" value="Proteccion"/>
+            <column name="description" value="Protectores bucales, orejeras y vendas"/>
+            <column name="status" value="active"/>
+        </insert>
+
+        <insert tableName="category">
+            <column name="id" value="11111111-1111-1111-1111-111111111104"/>
+            <column name="name" value="Accesorios"/>
+            <column name="description" value="Cinturones, bolsos y accesorios varios"/>
+            <column name="status" value="active"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

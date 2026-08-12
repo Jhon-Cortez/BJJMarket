@@ -11,7 +11,7 @@ const Productos = () => {
 
     const acquireProducts = async () => {
         try {
-            const response = await api.get("/productos");
+            const response = await api.get("/v1/products");
 
             setProductos(response.data);
         } catch (error) {
@@ -21,23 +21,23 @@ const Productos = () => {
 
     const columns = [
         {
-            title: "ID",
-            data: "product_id",
-        },
-        {
-            title: "Categoria",
-            data: "category_id",
+            title: "Nombre",
+            data: "name",
         },
         {
             title: "Sku",
             data: "sku",
         },
         {
-            title: "Description",
+            title: "Descripción",
             data: "description",
         },
         {
-            title: "Status",
+            title: "Categoría",
+            data: "category_id",
+        },
+        {
+            title: "Estado",
             data: "status",
         }
     ];

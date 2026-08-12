@@ -15,6 +15,7 @@
     <include file="changelogs/inventory/create-tables/create-inventory.xml"/>
     <include file="changelogs/inventory/create-tables/create-inventory-movement.xml"/>
     <include file="changelogs/inventory/insert/insert-image.xml"/>
+    <include file="changelogs/inventory/insert/insert-category.xml"/>
 
     <!-- Creación de tablas -->
     <include file="changelogs/security/create-person.xml"/>

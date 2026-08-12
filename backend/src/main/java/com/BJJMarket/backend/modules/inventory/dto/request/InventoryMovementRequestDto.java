@@ -4,7 +4,9 @@
  */
 package com.BJJMarket.backend.modules.inventory.dto.request;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
@@ -22,18 +24,17 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class InventoryMovementRequestDto {
-    @NotBlank(message = "La cantidad es requerida")
+    @Min(value = 0, message = "La cantidad no puede ser negativa")
     private int quantity;
-    @NotBlank(message = "Las existencias anteriores son requeridas")
+    @Min(value = 0, message = "Las existencias anteriores no pueden ser negativas")
     private int previous_stock;
     @NotBlank(message = "El motivo es requerido")
     private String reasson;
-    @NotBlank(message = "La cantidad nueva es requerida")
+    @Min(value = 0, message = "La cantidad nueva no puede ser negativa")
     private int new_stock;
-    @NotBlank(message = "La fecha de creacion es requerida")
     private LocalDateTime created_at;
-    @NotBlank(message = "El lote es requerido")
+    @NotNull(message = "El lote es requerido")
     private UUID product_batch_id;
-    @NotBlank(message = "El tipo de movimiento es requerido")
+    @NotNull(message = "El tipo de movimiento es requerido")
     private UUID movement_type_id;
 }

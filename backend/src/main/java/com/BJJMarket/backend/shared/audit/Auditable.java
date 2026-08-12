@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,10 +13,20 @@ import lombok.Setter;
 @Getter
 @Setter
 public abstract class Auditable {
-    @Column(name = "create_at", nullable = false)
+    @Column(name = "create_at", nullable = false, updatable = false)
     private LocalDateTime createAt;
     @Column(name = "update_at")
     private LocalDateTime updateAt;
-    @Column(name = "status")
-    private boolean active;
+    @Column(name = "active")
+    private boolean active = true;
+
+    @PrePersist
+    protected void onCreate() {
+        this.createAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.updateAt = LocalDateTime.now();
+    }
 }

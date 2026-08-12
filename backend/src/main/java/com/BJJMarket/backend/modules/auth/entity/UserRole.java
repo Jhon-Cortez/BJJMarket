@@ -16,6 +16,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import com.BJJMarket.backend.shared.audit.Auditable;
 
 //Entidad o tabla pivot que relaciona usuarios con los roles, la relacion es de uno a muchos,(Un usuario puede tener varios roles)
 @Entity
@@ -24,7 +25,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserRole {
+public class UserRole extends Auditable {
     @Id
     @GeneratedValue
     @UuidGenerator

@@ -16,6 +16,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import com.BJJMarket.backend.shared.audit.Auditable;
 //Entidad que almacena y administra los usuarios del aplicativo
 @Entity
 @Table(name = "users")
@@ -23,7 +25,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Users {
+public class Users extends Auditable {
     @Id
     @GeneratedValue
     @UuidGenerator

@@ -6,11 +6,14 @@ package com.BJJMarket.backend.modules.inventory.services.implement;
 
 import com.BJJMarket.backend.modules.inventory.dto.request.ProductRequestDto;
 import com.BJJMarket.backend.modules.inventory.dto.response.ProductResponseDto;
+import com.BJJMarket.backend.modules.inventory.entity.Category;
 import com.BJJMarket.backend.modules.inventory.entity.Product;
 import com.BJJMarket.backend.modules.inventory.mappers.ProductMapper;
+import com.BJJMarket.backend.modules.inventory.repository.CategoryRepository;
 import com.BJJMarket.backend.modules.inventory.repository.ProductRepository;
 import com.BJJMarket.backend.shared.AbstractCrudService;
 import java.util.List;
+import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 /**
@@ -21,15 +24,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProductServiceImpl extends AbstractCrudService<Product, ProductRequestDto, ProductResponseDto, ProductRepository> {
     private final ProductMapper productMapper;
-    
-    public ProductServiceImpl(ProductRepository repository, ProductMapper productMapper) {
+    private final CategoryRepository categoryRepository;
+
+    public ProductServiceImpl(ProductRepository repository, ProductMapper productMapper, CategoryRepository categoryRepository) {
         super(repository);
         this.productMapper = productMapper;
+        this.categoryRepository = categoryRepository;
     }
 
     @Override
     protected Product toEntity(ProductRequestDto dto) {
-        return productMapper.toEntity(dto);
+        Product product = productMapper.toEntity(dto);
+        product.setCategoryId(resolveCategory(dto.getCategory_id()));
+        return product;
     }
 
     @Override
@@ -40,8 +47,14 @@ public class ProductServiceImpl extends AbstractCrudService<Product, ProductRequ
     @Override
     protected void merge(ProductRequestDto dto, Product product) {
         productMapper.update(dto, product);
+        product.setCategoryId(resolveCategory(dto.getCategory_id()));
     }
-    
+
+    private Category resolveCategory(UUID categoryId) {
+        return categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new RuntimeException("Not found"));
+    }
+
     @Override
     public ProductResponseDto save(ProductRequestDto dto) {
         List<Product> product = repository.findAll();
