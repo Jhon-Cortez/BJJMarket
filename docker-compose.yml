@@ -70,7 +70,7 @@ services:
       - /app/node_modules
     environment:
       CHOKIDAR_USEPOLLING: "true"
-      VITE_API_URL: "http://10.3.232.162:9090/api"
+      VITE_API_URL: "/api"
       # Vite admite este nombre de host temporal mediante su variable oficial.
       __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS: ${VITE_ALLOWED_HOSTS:-}
 
