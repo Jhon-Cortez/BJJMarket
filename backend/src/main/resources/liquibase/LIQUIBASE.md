@@ -39,7 +39,7 @@ liquibase:
 
 ### Configuraciones de conexión
 
-Dentro de la ruta `backend/src/main/resources/liquibase/liquibase.properties`, se encuentra las credenciales de conexión y demas archivos relacionados, para conectarse a la db. Por ejemplo, nombre de usuario, contraseña, el archivo `.jar`
+La conexión de Liquibase se define en el servicio `liquibase` de `docker-compose.yml`. Así el despliegue no depende de un archivo local ignorado por Git.
 
 ### Changelogs
 
@@ -54,7 +54,7 @@ El contenedor oficial de Liquibase incluye el driver JDBC de PostgreSQL, por lo 
 ## Nota
 
 > [!WARNING]
-> Se debe tener en cuenta la ubicacion de estos archivos, si se piensan modificar nombres o ubicaciones de los archivos necesarios para funcionar, se deberan modificar las rutas en el contenedor.
+> Se debe tener en cuenta la ubicacion de estos archivos. Si se modifican nombres o ubicaciones, se deben actualizar las rutas del contenedor.
 
 > [!NOTE]
 > PostgreSQL crea la base de datos configurada al iniciar. Liquibase se ejecuta cuando el healthcheck de PostgreSQL es exitoso.

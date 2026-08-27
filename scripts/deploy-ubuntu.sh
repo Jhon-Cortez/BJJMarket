@@ -5,6 +5,9 @@
 # O, después de clonar el proyecto:
 #   ./scripts/deploy-ubuntu.sh
 
+#Este es el comando para que se ejecute todo desde 0
+# curl -fsSL https://raw.githubusercontent.com/Jhon-Cortez/BJJMarket/develop/scripts/deploy-ubuntu.sh | bash
+
 set -Eeuo pipefail
 
 REPOSITORY="${BJJ_REPOSITORY:-https://github.com/Jhon-Cortez/BJJMarket.git}"

@@ -30,7 +30,11 @@ services:
       - ./backend/src/main/resources/liquibase:/workspace/
 
     command: >
-      --defaultsFile=/workspace/liquibase.properties
+      --url=jdbc:postgresql://postgres:5432/bjjmarket
+      --username=bjjmarket
+      --password=BjjMarket2026!
+      --driver=org.postgresql.Driver
+      --changelog-file=master.xml
       --searchPath=/workspace
       update
 
