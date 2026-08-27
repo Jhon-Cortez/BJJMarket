@@ -9,7 +9,7 @@
     <changeSet id="inventory-001-create-category" author="Juan Pablo">
         <createTable tableName="category" remarks="Tabla que almacena los datos de las categorias de los productos">
 
-            <column name="id"  type="uniqueidentifier" defaultValueComputed="NEWID()">
+            <column name="id"  type="UUID" defaultValueComputed="gen_random_uuid()">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 

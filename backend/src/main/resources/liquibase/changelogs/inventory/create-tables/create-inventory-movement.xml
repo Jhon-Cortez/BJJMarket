@@ -9,7 +9,7 @@
     <changeSet id="inventory-001-create-inventory-movement" author="Juan Pablo">
         <createTable tableName="inventory_movement" remarks="Tabla que almacena los movimientos de inventario">
 
-            <column name="id"  type="uniqueidentifier" defaultValueComputed="NEWID()">
+            <column name="id"  type="UUID" defaultValueComputed="gen_random_uuid()">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
@@ -29,15 +29,15 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="created_at" type="datetime2">
+            <column name="created_at" type="TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="product_batch_id" type="uniqueidentifier">
+            <column name="product_batch_id" type="UUID">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="movement_type_id" type="uniqueidentifier">
+            <column name="movement_type_id" type="UUID">
                 <constraints nullable="false"/>
             </column>
 

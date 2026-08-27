@@ -64,7 +64,7 @@ Table product_batch {
   batch_status_id uuid
   batch_code varchar(100)
   quantity int
-  expiration_date datetime2
+  expiration_date timestamp
 }
 
 Table batch_status {
@@ -112,7 +112,7 @@ Table inventory_movement {
   previous_stock uuid
   new_stock uuid
   reason varchar(100)
-  created_at datetime2
+  created_at timestamp
 }
 
 Table movement_type {
@@ -206,4 +206,4 @@ Ref user_status_user: user_status.user_status_id < user.user_status_id
 
 Ref product_image_product: product.product_id < product_image.product_id
 Ref product_image_image: image.image_id < product_image.image_id
-Ref cart_status: cart.status_id > status.status_id 
+Ref cart_status: cart.status_id > status.status_id

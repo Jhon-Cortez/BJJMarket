@@ -8,7 +8,7 @@ En la raiz del proyecto se encuentra un archivo llamado docker compose, lo que b
 
 Alli se encuentran dos contenedores, (cabe recalcar que estos son para que funcionen de manera local):
 
-- Sql Server (DB)
+- PostgreSQL (DB)
 - Liquibase
 
 ## Contenedor de Liquibase
@@ -23,8 +23,6 @@ liquibase:
     volumes:
         # Creamos un espacio dentro de contenedor de docker y mostamos el resto alli dentro
       - ./backend/src/main/resources/liquibase:/workspace/
-        # es un driver JDBC permite que Java/Liquibase hable con SQL Server, traduce consultas y respuestas, maneja autenticación y conexión, sin él Liquibase no puede conectarse a la BD
-      - ./backend/src/main/resources/liquibase/drivers/mssql-jdbc-13.4.0.jre8.jar:/liquibase/lib/mssql.jar
         # Define el comando que se ejecutará automáticamente cuando el contenedor inicie.
     command: >
         # Le indicamos que use el archivo de configuracion de conexion con la db.
@@ -32,9 +30,9 @@ liquibase:
         # Como al crear los volumenes, liquibase puede leer los archivos que mostamos a el, entonces le indica que busque los archivos relacionados (create-tables.xml), dentro de alli.
       --searchPath=/workspace
       update
-    #   Indica la dependecia, primero ejecute el contenedor de sql server o que primero este duncionando, corriendo.
+    # Indica la dependencia: PostgreSQL debe estar saludable primero.
     depends_on:
-      - sql-server
+      - postgres
 ```
 
 ## Archivos relacionados
@@ -51,9 +49,7 @@ Dentro de la ruta `backend/src/main/resources/liquibase/changelogs/`, alli se de
 
 Dentro de la ruta `backend/src/main/resources/liquibase/master.xml`, alli es donde se deben llamar los (o un mejor termino para mayor comprension), importar estos archivos mediante las etiquetas `<include ...>`
 
-### Drivers
-
-Dentro de la ruta `backend/src/main/resources/liquibase/drivers/`, alli se debe ubicar el driver que facilita la conexión con la base de datos.
+El contenedor oficial de Liquibase incluye el driver JDBC de PostgreSQL, por lo que no se requiere montar uno adicional.
 
 ## Nota
 
@@ -61,4 +57,4 @@ Dentro de la ruta `backend/src/main/resources/liquibase/drivers/`, alli se debe 
 > Se debe tener en cuenta la ubicacion de estos archivos, si se piensan modificar nombres o ubicaciones de los archivos necesarios para funcionar, se deberan modificar las rutas en el contenedor.
 
 > [!NOTE]
-> Se debe crear primero la base de datos dentro del contenedor de sql server y despues ejecutar el contenedor de liquibase. 
+> PostgreSQL crea la base de datos configurada al iniciar. Liquibase se ejecuta cuando el healthcheck de PostgreSQL es exitoso.

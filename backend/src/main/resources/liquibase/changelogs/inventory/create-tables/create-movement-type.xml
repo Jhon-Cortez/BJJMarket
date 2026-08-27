@@ -9,7 +9,7 @@
     <changeSet id="inventory-001-create-movement-type" author="Juan Pablo">
         <createTable tableName="movement_type" remarks="Tabla que almacena los tipos de movimientos de inventario">
 
-            <column name="id"  type="uniqueidentifier" defaultValueComputed="NEWID()">
+            <column name="id"  type="UUID" defaultValueComputed="gen_random_uuid()">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 

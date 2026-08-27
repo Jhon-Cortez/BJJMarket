@@ -11,7 +11,7 @@
             <column name="role_id" value="1"/>
             <column name="name" value="ADMIN"/>
             <column name="description" value="Administrador del sistema"/>
-            <column name="create_at" valueComputed="GETDATE()"/>
+            <column name="create_at" valueComputed="CURRENT_TIMESTAMP"/>
             <column name="active" valueBoolean="true"/>
         </insert>
 
@@ -19,7 +19,7 @@
             <column name="role_id" value="2"/>
             <column name="name" value="SELLER"/>
             <column name="description" value="Vendedor de equipamiento BJJ"/>
-            <column name="create_at" valueComputed="GETDATE()"/>
+            <column name="create_at" valueComputed="CURRENT_TIMESTAMP"/>
             <column name="active" valueBoolean="true"/>
         </insert>
 
@@ -27,7 +27,7 @@
             <column name="role_id" value="3"/>
             <column name="name" value="BUYER"/>
             <column name="description" value="Comprador de equipamiento BJJ"/>
-            <column name="create_at" valueComputed="GETDATE()"/>
+            <column name="create_at" valueComputed="CURRENT_TIMESTAMP"/>
             <column name="active" valueBoolean="true"/>
         </insert>
 
@@ -35,7 +35,7 @@
             <column name="role_id" value="4"/>
             <column name="name" value="MODERATOR"/>
             <column name="description" value="Moderador de la plataforma"/>
-            <column name="create_at" valueComputed="GETDATE()"/>
+            <column name="create_at" valueComputed="CURRENT_TIMESTAMP"/>
             <column name="active" valueBoolean="true"/>
         </insert>
     </changeSet>

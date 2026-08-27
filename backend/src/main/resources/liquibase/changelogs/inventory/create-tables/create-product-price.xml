@@ -9,7 +9,7 @@
     <changeSet id="inventory-001-create-product-price" author="Juan Pablo">
         <createTable tableName="product_price" remarks="Tabla que almacena los precios de los productos">
 
-            <column name="id"  type="uniqueidentifier" defaultValueComputed="NEWID()">
+            <column name="id"  type="UUID" defaultValueComputed="gen_random_uuid()">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
@@ -17,11 +17,11 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="active" type="BIT">
+            <column name="active" type="BOOLEAN">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="product_id" type="uniqueidentifier">
+            <column name="product_id" type="UUID">
                 <constraints nullable="false"/>
             </column>
 

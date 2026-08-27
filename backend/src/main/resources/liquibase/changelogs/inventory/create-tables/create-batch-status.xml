@@ -9,7 +9,7 @@
     <changeSet id="inventory-001-create-batch-status" author="Juan Pablo">
         <createTable tableName="batch_status" remarks="Tabla que almacena los datos de los estados de los lotes">
 
-            <column name="id"  type="uniqueidentifier" defaultValueComputed="NEWID()">
+            <column name="id"  type="UUID" defaultValueComputed="gen_random_uuid()">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 

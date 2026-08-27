@@ -11,7 +11,7 @@
                 tableName="person"
                 remarks="Tabla que almacena los datos personales de los usuarios">
 
-            <column name="person_id" type="uniqueidentifier">
+            <column name="person_id" type="UUID">
                 <constraints primaryKey="true"
                              nullable="false"/>
             </column>
@@ -35,13 +35,13 @@
                              unique="true"/>
             </column>
 
-            <column name="create_at" type="DATETIME2(3)">
+            <column name="create_at" type="TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="update_at" type="DATETIME2(3)"/>
+            <column name="update_at" type="TIMESTAMP"/>
 
-            <column name="active" type="BIT"
+            <column name="active" type="BOOLEAN"
                     defaultValueBoolean = "true">
                 <constraints nullable="false"/>
             </column>

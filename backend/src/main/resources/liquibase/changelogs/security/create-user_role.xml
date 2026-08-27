@@ -9,12 +9,12 @@
     <changeSet id="security-005-create-user_status" author="Jhon-Cortez">
         <createTable
                 tableName="user_role">
-            <column name="user_role_id" type="uniqueidentifier">
+            <column name="user_role_id" type="UUID">
                 <constraints nullable="false"
                 primaryKey="true"
                 />
             </column>
-            <column name="user_id" type="uniqueidentifier">
+            <column name="user_id" type="UUID">
                 <constraints nullable="false"
                 />
             </column>
@@ -23,12 +23,12 @@
                 />
             </column>
 
-            <column name="create_at" type="DATETIME2(3)">
+            <column name="create_at" type="TIMESTAMP">
                     <constraints nullable="false"/>
             </column>
-            <column name="update_at" type="DATETIME2(3)"/>
+            <column name="update_at" type="TIMESTAMP"/>
 
-            <column name="active" type="BIT" defaultValueBoolean = "true">
+            <column name="active" type="BOOLEAN" defaultValueBoolean = "true">
                     <constraints nullable="false"/>
             </column>
         </createTable>

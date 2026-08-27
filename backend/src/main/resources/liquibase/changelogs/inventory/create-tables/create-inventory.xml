@@ -9,7 +9,7 @@
     <changeSet id="inventory-001-create-inventory" author="Juan Pablo">
         <createTable tableName="inventory" remarks="Tabla que almacena el inventario de los productos">
 
-            <column name="id"  type="uniqueidentifier" defaultValueComputed="NEWID()">
+            <column name="id"  type="UUID" defaultValueComputed="gen_random_uuid()">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
@@ -25,11 +25,11 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="updated_at" type="datetime2">
+            <column name="updated_at" type="TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="product_id" type="uniqueidentifier">
+            <column name="product_id" type="UUID">
                 <constraints nullable="false"/>
             </column>
 

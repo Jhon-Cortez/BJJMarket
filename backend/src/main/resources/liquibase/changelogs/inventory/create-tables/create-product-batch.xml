@@ -9,7 +9,7 @@
     <changeSet id="inventory-001-create-product-batch" author="Juan Pablo">
         <createTable tableName="product_batch" remarks="Tabla que almacena los datos de los lotes de productos">
 
-            <column name="id"  type="uniqueidentifier" defaultValueComputed="NEWID()">
+            <column name="id"  type="UUID" defaultValueComputed="gen_random_uuid()">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
@@ -17,15 +17,15 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="expiration_date" type="datetime2">
+            <column name="expiration_date" type="TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="batch_status_id" type="uniqueidentifier">
+            <column name="batch_status_id" type="UUID">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="product_id" type="uniqueidentifier">
+            <column name="product_id" type="UUID">
                 <constraints nullable="false"/>
             </column>
 

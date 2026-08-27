@@ -100,10 +100,10 @@
             <version>2.2.31</version>
             <type>jar</type>
         </dependency>
-        <!-- Dependencia SQL Server -->
+        <!-- Driver PostgreSQL -->
         <dependency>
-            <groupId>com.microsoft.sqlserver</groupId>
-            <artifactId>mssql-jdbc</artifactId>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
         <dependency>

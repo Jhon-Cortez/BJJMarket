@@ -11,7 +11,7 @@
             <column name="person_id" value=""/>
             <column name="name" value="ACTIVO"/>
             <column name="description" value="Usuario activo en la plataforma"/>
-            <column name="create_at" valueComputed="GETDATE()"/>
+            <column name="create_at" valueComputed="CURRENT_TIMESTAMP"/>
             <column name="active" valueBoolean="true"/>
         </insert>
     </changeSet>

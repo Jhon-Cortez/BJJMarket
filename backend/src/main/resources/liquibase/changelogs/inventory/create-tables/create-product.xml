@@ -9,7 +9,7 @@
     <changeSet id="inventory-001-create-product" author="Juan Pablo">
         <createTable tableName="product" remarks="Tabla que almacena los datos de los productos">
 
-            <column name="id"  type="uniqueidentifier" defaultValueComputed="NEWID()">
+            <column name="id"  type="UUID" defaultValueComputed="gen_random_uuid()">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
@@ -25,7 +25,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="category_id" type="uniqueidentifier">
+            <column name="category_id" type="UUID">
                 <constraints nullable="false"/>
             </column>
 

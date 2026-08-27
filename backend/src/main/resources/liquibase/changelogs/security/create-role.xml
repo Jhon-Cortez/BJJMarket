@@ -23,13 +23,13 @@
 
             <column name="description" type="VARCHAR(50)"/>
 
-            <column name="create_at" type="DATETIME2(3)">
+            <column name="create_at" type="TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="update_at" type="DATETIME2(3)"/>
+            <column name="update_at" type="TIMESTAMP"/>
 
-            <column name="active" type="BIT"
+            <column name="active" type="BOOLEAN"
                     defaultValueBoolean = "true">
                 <constraints nullable="false"/>
             </column>

@@ -61,16 +61,16 @@ else
 fi
 
 ENV_FILE="$INSTALL_DIR/backend/src/main/resources/.env"
-if [ ! -f "$ENV_FILE" ]; then
+if [ ! -f "$ENV_FILE" ] || ! grep -q '^DB_URL=jdbc:postgresql://postgres:5432/bjjmarket$' "$ENV_FILE"; then
   info "Creando la configuración local del backend"
-  # El password coincide con el SQL Server definido actualmente en docker-compose.yml.
+  # El password coincide con PostgreSQL definido actualmente en docker-compose.yml.
   # Se puede cambiar en ambos sitios antes de ejecutar el script si se requiere.
   JWT_SECRET="$(openssl rand -hex 32 2>/dev/null || date +%s%N)"
   umask 077
   {
-    printf '%s\n' 'DB_URL=jdbc:sqlserver://sql-server:1433;databaseName=SupermarketDB;encrypt=true;trustServerCertificate=true'
-    printf '%s\n' 'DB_USER=sa'
-    printf '%s\n' 'DB_PASSWORD=SqlServer2026'
+    printf '%s\n' 'DB_URL=jdbc:postgresql://postgres:5432/bjjmarket'
+    printf '%s\n' 'DB_USER=bjjmarket'
+    printf '%s\n' 'DB_PASSWORD=BjjMarket2026!'
     printf 'JWT_SECRET=%s\n' "$JWT_SECRET"
   } > "$ENV_FILE"
 fi

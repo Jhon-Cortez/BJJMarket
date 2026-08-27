@@ -9,15 +9,15 @@
     <changeSet id="inventory-001-create-product-image" author="Juan Pablo">
         <createTable tableName="product_image" remarks="Tabla que almacena la relacion entre productos e imagenes">
 
-            <column name="id"  type="uniqueidentifier" defaultValueComputed="NEWID()">
+            <column name="id"  type="UUID" defaultValueComputed="gen_random_uuid()">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
-            <column name="product_id" type="uniqueidentifier">
+            <column name="product_id" type="UUID">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="image_id" type="uniqueidentifier">
+            <column name="image_id" type="UUID">
                 <constraints nullable="false"/>
             </column>
 
