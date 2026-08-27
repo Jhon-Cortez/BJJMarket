@@ -49,7 +49,7 @@ Dentro de la ruta `backend/src/main/resources/liquibase/changelogs/`, alli se de
 
 Dentro de la ruta `backend/src/main/resources/liquibase/master.xml`, alli es donde se deben llamar los (o un mejor termino para mayor comprension), importar estos archivos mediante las etiquetas `<include ...>`
 
-El contenedor oficial de Liquibase incluye el driver JDBC de PostgreSQL, por lo que no se requiere montar uno adicional.
+La imagen `docker/liquibase/Dockerfile` instala el driver JDBC de PostgreSQL con Liquibase Package Manager antes de ejecutar las migraciones.
 
 ## Nota
 
