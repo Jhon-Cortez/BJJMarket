@@ -19,7 +19,9 @@ services:
       timeout: 5s
       retries: 10
   liquibase:
-    image: liquibase/liquibase:5.0.1
+    build:
+      context: ./docker/liquibase
+    image: bjjmarket-liquibase:5.0.1
     container_name: liquibase-container
 
     depends_on:
